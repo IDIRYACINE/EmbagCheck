@@ -9,7 +9,7 @@ module idir.embag {
     requires de.jensd.fx.glyphs.fontawesome;
     requires de.jensd.fx.glyphs.materialdesignicons;
     opens idir.embag to javafx.fxml;
-    opens idir.embag.Controllers to javafx.fxml;
-    opens idir.embag.modules to javafx.base;
+    opens idir.embag.FormControllers to javafx.fxml;
+    opens idir.embag.Modules to javafx.base;
     exports idir.embag;
 }

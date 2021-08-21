@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="575.0" 
-prefWidth="1105.0" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.Controllers.ChecksController">
+prefWidth="1105.0" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.FormControllers.ChecksController">
    <children>
       <HBox alignment="TOP_RIGHT" spacing="30.0">
          <children>
-            <Button fx:id="NewCheck" mnemonicParsing="false" onAction="#CreateCheck" prefHeight="35.0" prefWidth="91.0" text="New" />
+            <Button fx:id="Search" mnemonicParsing="false" onAction="#NewSearchDialog" prefHeight="35.0" prefWidth="91.0" text="Search" />
             <Button mnemonicParsing="false" onAction="#observeCheck" prefHeight="35.0" prefWidth="91.0" text="Obs" />
          </children>
          <padding>

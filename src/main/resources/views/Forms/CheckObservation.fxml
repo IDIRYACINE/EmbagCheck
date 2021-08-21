@@ -10,7 +10,7 @@
 
 
 <VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="idir.embag.Controllers.ObservationController">
+fx:controller="idir.embag.FormControllers.ObservationController">
    <children>
       <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>

@@ -10,32 +10,40 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" 
-prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.Controllers.ChekFormController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.FormControllers.ChekFormController">
    <children>
       <AnchorPane fx:id="checkPane" maxWidth="620.0" VBox.vgrow="NEVER">
          <children>
             <ImageView fitHeight="353.0" fitWidth="632.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/ccp.jpg" />
+                  <Image url="@../../images/ccp.png" />
                </image>
             </ImageView>
-            <Label fx:id="Date" layoutX="486.0" layoutY="153.0" prefHeight="24.0" prefWidth="70.0" text="2020.12.28">
+            <Label fx:id="Date" layoutX="511.0" layoutY="123.0" prefHeight="24.0" prefWidth="81.0" text="2020.12.28">
                <font>
-                  <Font size="12.0" />
+                  <Font name="Serif Bold" size="12.0" />
                </font>
             </Label>
-            <Label fx:id="Location" alignment="CENTER_RIGHT" layoutX="316.0" layoutY="152.0" prefHeight="24.0" prefWidth="148.0" text="Bordj Bou Arereidj" />
-            <Label fx:id="Receiver" layoutX="239.0" layoutY="140.0" prefHeight="24.0" prefWidth="200.0" text="IDIR YACINE" />
-            <Label fx:id="stringAmount" alignment="CENTER" layoutX="83.0" layoutY="116.0" prefHeight="24.0" prefWidth="501.0" text="decent mill" />
-            <Label fx:id="Amount" alignment="CENTER" layoutX="447.0" layoutY="68.0" prefHeight="24.0" prefWidth="127.0" text="2000.2000.2000">
+            <Label fx:id="Location" alignment="CENTER_RIGHT" layoutX="277.0" layoutY="124.0" prefHeight="24.0" prefWidth="206.0" text="Bordj Bou Arereidj">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Serif Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="Receiver" alignment="CENTER" layoutX="112.0" layoutY="103.0" prefHeight="24.0" prefWidth="470.0" text="IDIR YACINE">
+               <font>
+                  <Font name="Serif Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="stringAmount" alignment="CENTER" layoutX="34.0" layoutY="79.0" prefHeight="24.0" prefWidth="501.0" text="decent mill">
+               <font>
+                  <Font name="Serif Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="Amount" alignment="CENTER" layoutX="493.0" layoutY="23.0" prefHeight="24.0" prefWidth="127.0" text="200.200.200.200">
+               <font>
+                  <Font name="Serif Bold" size="13.0" />
                </font>
             </Label>
-            <Label fx:id="ID" alignment="CENTER" layoutX="118.0" layoutY="76.0" prefHeight="24.0" prefWidth="127.0" text="2000.2000.2000">
+            <Label fx:id="ID" alignment="CENTER" layoutX="43.0" layoutY="38.0" prefHeight="24.0" prefWidth="127.0" text="2000.2000.2000">
                <font>
-                  <Font size="14.0" />
+                  <Font name="Serif Bold" size="10.0" />
                </font>
             </Label>
          </children>
@@ -54,7 +62,7 @@ prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.co
                         <Font size="22.0" />
                      </font>
                   </Button>
-                  <Button fx:id="BConfirm" onAction="#CreateCheck" alignment="CENTER" mnemonicParsing="false" text="Confirm">
+                  <Button fx:id="BConfirm" alignment="CENTER" mnemonicParsing="false" onAction="#CreateCheck" text="Confirm">
                      <font>
                         <Font size="22.0" />
                      </font>

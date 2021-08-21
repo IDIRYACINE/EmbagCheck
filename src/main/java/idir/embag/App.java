@@ -4,6 +4,7 @@ package idir.embag;
 
 import java.io.IOException;
 
+import idir.embag.FormControllers.MainController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,15 +21,11 @@ import javafx.stage.Window;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException{
-        
-        Parent root;
-            root = FXMLLoader.load(getClass().getResource("/views/Main.fxml"));
-            Scene scene = new Scene(root);
-           // stage.initStyle(StageStyle.UTILITY);
-            stage.setTitle("Embag ");
-            stage.setScene(scene);          
-            //stage.getIcons().add(new Image(getClass().getResource("/images/iconApp.png"))));
-            stage.show();       
+        Parent root = FXMLLoader.load(getClass().getResource("/views/Main.fxml")); 
+        Scene scene = new Scene(root);
+        stage.setTitle("Embag ");
+        stage.setScene(scene);          
+        stage.show();       
     }
 
     public static void main(String[] args) {
