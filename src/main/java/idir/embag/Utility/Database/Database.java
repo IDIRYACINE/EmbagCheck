@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import idir.embag.Modules.CheckModel;
+import idir.embag.Modules.CheckStatus;
 
 public class Database implements DatabaseInterface{
     private  String path ;
@@ -60,8 +62,6 @@ public class Database implements DatabaseInterface{
         }
     }
 
-    
-
     @Override
     public void Update(CheckModel checkModel) throws SQLException{
         String UPDATE_STATUS_QUERY = "UPDATE "+TABLE_NAME+" SET status = ? , "
@@ -89,10 +89,14 @@ public class Database implements DatabaseInterface{
     }
 
     @Override
-    public CheckModel[] RequestData(String fields, String values) throws SQLException{
-        String SELECT_CHECK_QUERY = "SELECT * FROM  " + TABLE_NAME + selectQueryFormater(fields);
+    public CheckModel[] RequestData() throws SQLException{
+        String SELECT_CHECK_QUERY = "SELECT * FROM  " + TABLE_NAME ;
+
+        //String SELECT_CHECK_QUERY = "SELECT * FROM  " + TABLE_NAME + selectQueryFormater(fields);
         PreparedStatement qStatement = conn.prepareStatement(SELECT_CHECK_QUERY) ;
-        qStatement.executeQuery();
+        ResultSet resultSet =  qStatement.executeQuery();
+
+      
         return null;
     }    
 
@@ -110,6 +114,24 @@ public class Database implements DatabaseInterface{
             }
         
         return result;
+    }
+
+    private CheckModel QueryToCheckModel(ResultSet rSet) throws SQLException{
+        //while(rSet.next()){
+            Integer ID = rSet.getInt("id");
+            Integer AMOUNT = rSet.getInt("amount");
+            String RECEIVER = rSet.getString("receiver");
+            String TDATE = rSet.getString("date");
+            String LOCATION = rSet.getString("location");
+            CheckStatus STATUS = CheckStatus.valueOf(rSet.getString("status"));
+
+            System.out.println("ID : " + ID + " receiver : " + RECEIVER +" amount : " + AMOUNT +
+                            " Location : " + LOCATION + " status : " +STATUS + " date : " +TDATE);
+    
+       // }
+          CheckModel model = new CheckModel(RECEIVER, TDATE, AMOUNT, ID, STATUS, LOCATION);
+
+        return model;
     }
    
    

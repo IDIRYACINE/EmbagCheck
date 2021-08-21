@@ -9,6 +9,8 @@ import com.jfoenix.controls.JFXDialog;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import idir.embag.CustomViews.CheckObserverModel;
 import idir.embag.CustomViews.SearchModel;
+import idir.embag.Utility.Database.Database;
+import idir.embag.Utility.Database.DatabaseInterface;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -37,6 +39,8 @@ public class MainController implements Initializable{
 
     private VBox dataPanel , checkPanel ;
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
           try {
@@ -45,10 +49,9 @@ public class MainController implements Initializable{
             e.printStackTrace();
           }
           setInitialScene();
+          
     }
-    
-
-    
+     
     @FXML
     private void dataClicked(Event event) throws IOException{
       setNode(dataPanel);
@@ -105,8 +108,6 @@ public class MainController implements Initializable{
       setNode(dataPanel);
     };
 
-    public StackPane  getDialogParentPane(){
-      return  rightPanel ;
-    }
+  
     
 }

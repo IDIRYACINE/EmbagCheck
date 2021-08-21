@@ -18,28 +18,16 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
 
 public class ChekFormController implements Initializable{
 
 
     @FXML
-    private Button BPrint;
+    private Button BPrint, BCancel, BConfirm;
     @FXML
-    private Button BCancel;
-    @FXML
-    private Button BConfirm;
-    @FXML
-    private Label Date;
-    @FXML
-    private Label Receiver;
-    @FXML
-    private Label Amount;
-    @FXML
-    private Label stringAmount;
-    @FXML
-    private Label ID;
-    @FXML
-    private Label Location;
+    private Label Date,Receiver,Amount,stringAmount,ID,Location;
     @FXML
     private TextField ReceiverField;
     @FXML
@@ -59,7 +47,7 @@ public class ChekFormController implements Initializable{
        AmountField.textProperty().addListener(changeListener);
        IDField.textProperty().addListener(changeListener);
        LocationField.textProperty().addListener(changeListener);
-       checkModel =  new CheckModel("idir", "yacine", 0, 0, CheckStatus.Confirmed,"");
+       checkModel =  new CheckModel("", "", 0, 0, CheckStatus.Confirmed,"");
 
     }
 
@@ -70,10 +58,26 @@ public class ChekFormController implements Initializable{
     }
     @FXML 
     private void CreateCheck(){
+        updateCheckModel();
         ChecksController.addCheck(checkModel);
     }
            
-    
+    private String getTime(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
+        LocalDateTime now = LocalDateTime.now();  
+        return dtf.format(now) ;
+    }
+    private void updateCheckModel(){
+        Integer amount = Integer.parseInt(Amount.getText());
+        checkModel.setAmount(amount);
+
+        Integer id = Integer.parseInt(ID.getText());
+        checkModel.setID(id);
+
+        checkModel.setReceiver(Receiver.getText());
+        checkModel.setDate(getTime());
+        checkModel.setLocation(Location.getText());
+    }
 
     private ChangeListener<String> changeListener = new ChangeListener<String>(){
         Pattern pattern = Pattern.compile("(?<=id=).+?(?=,)");

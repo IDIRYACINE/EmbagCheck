@@ -25,36 +25,33 @@ import javafx.scene.layout.StackPane;
 public class ChecksController implements Initializable{
 
     @FXML
-    private Button Search ;
-    @FXML
     private TableView<CheckModel> DataTable;
     @FXML
-    private TableColumn<CheckModel,String> Date ;
+    private TableColumn<CheckModel,String> Date,Receiver ;
     @FXML
-    private TableColumn<CheckModel,Integer> ID ;
-    @FXML
-    private TableColumn<CheckModel,String> Receiver ;
-    @FXML
-    private TableColumn<CheckModel,Integer> Amount ;
+    private TableColumn<CheckModel,Integer> ID ,Amount;
     @FXML
     private TableColumn<CheckModel,CheckStatus> Status ;
 
 
-    private DatabaseInterface database ; 
     private SearchModel searchModel;
     private CheckObserverModel observerModel ;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setUpDatabase();
         DataTable.setItems(checks);
         setUpColumns();
     }
 
     @FXML
-    private void NewSearchDialog(Event e){
+    private void newSearchDialog(Event e){
         searchModel.show();
+    }
+
+    @FXML
+    private void refreshChecks(Event e){
+        App.dHelper.loadData();
     }
 
     @FXML
@@ -66,6 +63,7 @@ public class ChecksController implements Initializable{
 
     public static void addCheck(CheckModel checkModel){
         checks.add(checkModel);
+        App.dHelper.add(checkModel);
     }
 
    
@@ -79,15 +77,11 @@ public class ChecksController implements Initializable{
 
     }
 
-    private void setUpDatabase(){
-        database = new Database();
-        database.Connect();
-    }
-
     public void setUpDialogs(StackPane rightPanel){
         try {
             searchModel = new SearchModel(rightPanel);
-            observerModel = new CheckObserverModel(rightPanel);
+            observerModel = new CheckObserverModel(rightPanel,DataTable);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

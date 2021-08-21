@@ -13,8 +13,10 @@ prefWidth="1105.0" spacing="20.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="
    <children>
       <HBox alignment="TOP_RIGHT" spacing="30.0">
          <children>
-            <Button fx:id="Search" mnemonicParsing="false" onAction="#NewSearchDialog" prefHeight="35.0" prefWidth="91.0" text="Search" />
-            <Button mnemonicParsing="false" onAction="#observeCheck" prefHeight="35.0" prefWidth="91.0" text="Obs" />
+            <Button mnemonicParsing="false" onAction="#newSearchDialog" prefHeight="35.0" prefWidth="91.0" text="Search" />
+            <Button mnemonicParsing="false" onAction="#observeCheck" prefHeight="35.0" prefWidth="91.0" text="Observation" />
+            <Button mnemonicParsing="false" onAction="#refreshChecks" prefHeight="35.0" prefWidth="91.0" text="Refresher" />
+
          </children>
          <padding>
             <Insets right="20.0" top="10.0" />

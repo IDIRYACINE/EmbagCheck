@@ -9,5 +9,5 @@ public interface DatabaseInterface {
     public void Disconnect();
     public void Update(CheckModel checkModel) throws SQLException;
     public void Insert(CheckModel checkModel) throws SQLException;
-    public CheckModel[] RequestData(String fields , String values)  throws SQLException;
+    public CheckModel[] RequestData()  throws SQLException;
 }

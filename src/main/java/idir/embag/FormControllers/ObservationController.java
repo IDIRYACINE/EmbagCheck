@@ -1,12 +1,14 @@
 package idir.embag.FormControllers;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 
+import idir.embag.App;
 import idir.embag.Modules.CheckModel;
 import idir.embag.Modules.CheckStatus;
 import javafx.collections.FXCollections;
@@ -15,20 +17,21 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 public class ObservationController implements Initializable{
 
     @FXML
-    private Button confirmButton;
-    @FXML
-    private Button cancelButton;
+    private Button confirmButton , cancelButton;
     @FXML
     private JFXComboBox<CheckStatus> observationBox;
     
     private CheckModel checkModel;
     private CheckStatus newState ;
     private JFXDialog stage;
+    private TableView<CheckModel> DataTable;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,6 +59,8 @@ public class ObservationController implements Initializable{
     @FXML
     private void confirmObservation(Event e){
         checkModel.setStatus(newState);
+        DataTable.refresh();
+        App.dHelper.Update(checkModel);
         stage.close();
     }
 
@@ -66,6 +71,11 @@ public class ObservationController implements Initializable{
     public void setDialogStage(JFXDialog dialog){
         stage = dialog;
     }
+
+    public void setTable(TableView<CheckModel> table) {
+        DataTable = table ;
+    }
+    
     
 
 
