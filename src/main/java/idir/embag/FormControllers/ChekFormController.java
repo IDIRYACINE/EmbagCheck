@@ -32,17 +32,11 @@ public class ChekFormController implements Initializable{
     @FXML
     private Button BPrint, BCancel, BConfirm;
     @FXML
-    private Label Date,Receiver,Amount,stringAmount,ID,Location;
+    private Label Date,Receiver,Amount,stringAmountF,stringAmountS,ID,Location;
     @FXML
-    private TextField ReceiverField;
+    private TextField ReceiverField, IDField,LocationField,AmountField;
     @FXML
-    private TextField IDField;
-    @FXML
-    private TextField LocationField;
-    @FXML
-    private TextField AmountField;
-    @FXML
-    private AnchorPane checkPane;
+    AnchorPane checkPane;
 
     private CheckModel checkModel ;
 
@@ -62,6 +56,7 @@ public class ChekFormController implements Initializable{
 
         Pane test = FXMLLoader.load(getClass().getResource("/views/preview.fxml")); 
         Scene scene = new Scene(test);
+        
         
         checkPrinter.Print(test);
     }
@@ -115,7 +110,9 @@ public class ChekFormController implements Initializable{
     }
     private void updateAmount (String value){
         Amount.setText(value);
-        stringAmount.setText(CheckFormater.NumParser(value));
+        String[] formatedAmountString = CheckFormater.NumParser(value) ;
+        stringAmountF.setText(formatedAmountString[0]);
+        stringAmountS.setText(formatedAmountString[1]);
         checkModel.setAmount(Integer.parseInt(value));
        
 
@@ -129,7 +126,6 @@ public class ChekFormController implements Initializable{
         checkModel.setLocation(value);
     }
     
-
 }
 
 

@@ -29,5 +29,17 @@ public class NumbersEnum {
         "Quatre-vingts",
         "Quatre-vingt-dix",
     };
+  public static String[] TenSpecialCase = {
+    "dix",
+    "onze",
+    "deuze",
+    "treize",
+    "quatorze",
+    "quinze",
+    "seize",
+    "dix-sept",
+    "dix-huit",
+    "dix-neuf"
+  }; 
    
 }

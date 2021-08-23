@@ -1,26 +1,21 @@
 package idir.embag.Utility.Printer;
 
+
+import java.io.File;
 import java.io.FileInputStream;
 
+import javax.print.Doc;
+import javax.print.DocFlavor;
+import javax.print.DocPrintJob;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
+import javax.print.SimpleDoc;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.standard.MediaSizeName;
 
-import idir.embag.App;
-
-import java.awt.print.*;
-
-import javafx.print.PageLayout;
-import javafx.print.PageOrientation;
-import javafx.print.Printer;
-import javafx.print.PrinterAttributes;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.print.Paper;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.HBox;
-import javafx.scene.transform.Scale;
 import javafx.stage.Window;
 
 public class CheckPrinter {
@@ -38,7 +33,31 @@ public class CheckPrinter {
             PrintService[] printServices = PrintServiceLookup.lookupPrintServices(null, null);
             System.out.println("Number of print services: " + printServices.length);
         }
+        
     }
+
+    private void PrintDoc(){
+        try {
+            File file = new File("path/to/pdf");
+            DocFlavor flavor = DocFlavor.INPUT_STREAM.PDF;
+            PrintRequestAttributeSet attr = new HashPrintRequestAttributeSet();
+            attr.add(MediaSizeName.ISO_A4);
+            FileInputStream fis = new FileInputStream(file);
+            Doc doc = new SimpleDoc(fis, flavor, null);
+            DocPrintJob job = PrintServiceLookup.lookupDefaultPrintService().createPrintJob();
+            job.print(doc, attr);
+            fis.close();
+        }
+    
+            catch(Exception e){
+                System.out.println(e);
+            }
+    }
+
+    /*
+    
+
+    */
     
 }
 

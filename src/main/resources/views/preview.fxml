@@ -6,41 +6,41 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<Pane minHeight="247.6" minWidth="642.3" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="264.6" fitWidth="642.3" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/ModelCCP.jpg" />
+            <Image url="@../images/check.png" />
          </image>
       </ImageView>
-      <Text layoutX="69.0" layoutY="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="16.5">
+      <Text layoutX="500.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="127.0">
          <font>
-            <Font name="System Bold" size="2.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="42.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bordj bou arreridj" textAlignment="RIGHT" wrappingWidth="25.0">
+      <Text layoutX="172.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="390.0">
          <font>
-            <Font name="System Bold" size="2.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="69.5" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" textAlignment="RIGHT" wrappingWidth="15.0">
+      <Text layoutX="31.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="530.0">
          <font>
-            <Font name="System Bold" size="2.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="15.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bordj bou arreridj" textAlignment="CENTER" wrappingWidth="65.0">
+      <Text layoutX="110.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" textAlignment="CENTER" wrappingWidth="480.0">
          <font>
-            <Font name="System Bold" size="2.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="10.0" layoutY="13.5" strokeType="OUTSIDE" strokeWidth="0.0" text="bordj bou arreridj" wrappingWidth="65.0">
+      <Text layoutX="516.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2030/13/45" wrappingWidth="92.0">
          <font>
-            <Font name="System Bold" size="2.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
-      <Text layoutX="24.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bordj bou arreridj" wrappingWidth="52.0">
+      <Text layoutX="315.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOrdj BOur arreridj" textAlignment="RIGHT" wrappingWidth="180.0">
          <font>
-            <Font name="System Bold" size="2.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Text>
    </children>

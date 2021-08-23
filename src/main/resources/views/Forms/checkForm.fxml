@@ -32,7 +32,7 @@
                <font>
                   <Font name="Serif Bold" size="13.0" />
                </font></Label>
-            <Label fx:id="stringAmount" alignment="CENTER" layoutX="34.0" layoutY="79.0" prefHeight="24.0" prefWidth="501.0" text="decent mill">
+            <Label fx:id="stringAmountS" alignment="CENTER" layoutX="34.0" layoutY="79.0" prefHeight="24.0" prefWidth="501.0" text="decent mill">
                <font>
                   <Font name="Serif Bold" size="13.0" />
                </font></Label>
@@ -44,6 +44,11 @@
             <Label fx:id="ID" alignment="CENTER" layoutX="43.0" layoutY="38.0" prefHeight="24.0" prefWidth="127.0" text="2000.2000.2000">
                <font>
                   <Font name="Serif Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="stringAmountF" alignment="CENTER" layoutX="175.0" layoutY="55.0" prefHeight="24.0" prefWidth="375.0" text="decent mill">
+               <font>
+                  <Font name="Serif Bold" size="13.0" />
                </font>
             </Label>
          </children>
