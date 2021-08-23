@@ -1,13 +1,5 @@
 package idir.embag.Utility.Formater;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import idir.embag.Utility.Formater.NumbersEnum;
-
-
 
 public class CheckFormater {
     private static String currencyString = "DA"; 
@@ -29,6 +21,7 @@ public class CheckFormater {
         if (length < 4){
             result[0] = HunderedParser(stringNumbers );
             result[0] += currencyString;
+            result[0] = amountSecurityFormater(result[0]);
             result[1] = securityBlock;
         }
         else {
@@ -80,7 +73,7 @@ public class CheckFormater {
                     if (num > 1 ){
                         result +=  NumbersEnum.Tens[num] + "-";
                     }
-                    else if (num == 1 || num == 9 ){ specialCase = true ;}
+                    if ((num == 1) || (num == 9) ){ specialCase = true ;}
                 }
                 else {
                     if (num > 0 && !specialCase){

@@ -20,7 +20,7 @@
       </Text>
       <Text layoutX="172.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="390.0">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="SansSerif Bold" size="18.0" />
          </font>
       </Text>
       <Text layoutX="31.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="530.0">

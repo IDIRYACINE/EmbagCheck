@@ -4,16 +4,12 @@ package idir.embag;
 
 import java.io.IOException;
 
-import idir.embag.FormControllers.MainController;
 import idir.embag.Utility.Database.DatabaseAcessHelper;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
 
 /**

@@ -4,13 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.jfoenix.controls.JFXDialog;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import idir.embag.CustomViews.CheckObserverModel;
-import idir.embag.CustomViews.SearchModel;
-import idir.embag.Utility.Database.Database;
-import idir.embag.Utility.Database.DatabaseInterface;
+
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;

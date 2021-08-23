@@ -1,4 +1,4 @@
-package idir.embag.Modules;
+package idir.embag.Models;
 
 
 public class CheckModel{

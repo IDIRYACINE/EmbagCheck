@@ -3,7 +3,7 @@ package idir.embag.Utility.Database;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import idir.embag.Modules.CheckModel;
+import idir.embag.Models.CheckModel;
 
 public interface DatabaseInterface {
     public void Connect();

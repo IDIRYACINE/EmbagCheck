@@ -1,14 +1,12 @@
-package idir.embag.CustomViews;
+package idir.embag.Models;
 
 import java.io.IOException;
 
 import com.jfoenix.controls.JFXDialog;
 
 import idir.embag.FormControllers.ObservationController;
-import idir.embag.Modules.CheckModel;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 

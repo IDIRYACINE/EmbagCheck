@@ -1,7 +1,6 @@
 package idir.embag.Utility.Database;
 import java.io.File;
 import java.sql.Connection;
-import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,8 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import idir.embag.Modules.CheckModel;
-import idir.embag.Modules.CheckStatus;
+import idir.embag.Models.CheckModel;
+import idir.embag.Models.CheckStatus;
 
 public class Database implements DatabaseInterface{
     private  String path ;

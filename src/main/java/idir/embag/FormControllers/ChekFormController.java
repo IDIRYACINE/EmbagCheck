@@ -6,22 +6,21 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import idir.embag.Modules.CheckModel;
-import idir.embag.Modules.CheckStatus;
+import idir.embag.Models.CheckModel;
+import idir.embag.Models.CheckStatus;
 import idir.embag.Utility.Formater.CheckFormater;
+import idir.embag.Utility.Printer.CheckPrintModel;
 import idir.embag.Utility.Printer.CheckPrinter;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
@@ -32,13 +31,13 @@ public class ChekFormController implements Initializable{
     @FXML
     private Button BPrint, BCancel, BConfirm;
     @FXML
-    private Label Date,Receiver,Amount,stringAmountF,stringAmountS,ID,Location;
+    private Label LDate,Receiver,Amount,stringAmountF,stringAmountS,ID,Location;
     @FXML
     private TextField ReceiverField, IDField,LocationField,AmountField;
     @FXML
     AnchorPane checkPane;
 
-    private CheckModel checkModel ;
+    private String sReceiver , sAmount , sStringAmountF,sStringAmountS,sLocation,sDate;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -46,42 +45,32 @@ public class ChekFormController implements Initializable{
        AmountField.textProperty().addListener(changeListener);
        IDField.textProperty().addListener(changeListener);
        LocationField.textProperty().addListener(changeListener);
-       checkModel =  new CheckModel("", "", 0, 0, CheckStatus.Confirmed,"");
-
+       sDate = getTime();
+       LDate.setText(sDate);
     }
 
     @FXML
     private void Print(Event event) throws IOException{
         CheckPrinter checkPrinter = new CheckPrinter();
-
-        Pane test = FXMLLoader.load(getClass().getResource("/views/preview.fxml")); 
-        Scene scene = new Scene(test);
-        
-        
-        checkPrinter.Print(test);
+        CheckPrintModel printModel = new CheckPrintModel(sAmount,sStringAmountF,sStringAmountS,sReceiver,sLocation); 
+        Scene scene = new Scene(printModel);
+        checkPrinter.Print(printModel);
     }
     @FXML 
     private void CreateCheck(){
-        updateCheckModel();
+        Integer amount = Integer.parseInt(Amount.getText());
+        Integer id = Integer.parseInt(ID.getText());
+        CheckModel checkModel  = new CheckModel(sReceiver, sDate, amount, id, CheckStatus.Attendu, sLocation);
         ChecksController.addCheck(checkModel);
     }
            
     private String getTime(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH");  
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
         LocalDateTime now = LocalDateTime.now();  
         return dtf.format(now) ;
     }
-    private void updateCheckModel(){
-        Integer amount = Integer.parseInt(Amount.getText());
-        checkModel.setAmount(amount);
 
-        Integer id = Integer.parseInt(ID.getText());
-        checkModel.setID(id);
-
-        checkModel.setReceiver(Receiver.getText());
-        checkModel.setDate(getTime());
-        checkModel.setLocation(Location.getText());
-    }
+ 
 
     private ChangeListener<String> changeListener = new ChangeListener<String>(){
         Pattern pattern = Pattern.compile("(?<=id=).+?(?=,)");
@@ -106,28 +95,24 @@ public class ChekFormController implements Initializable{
     };
 
     private void updateReceiver(String value){
+        sReceiver = value;
         Receiver.setText(value);
     }
     private void updateAmount (String value){
+        sAmount = value ;
         Amount.setText(value);
         String[] formatedAmountString = CheckFormater.NumParser(value) ;
-        stringAmountF.setText(formatedAmountString[0]);
-        stringAmountS.setText(formatedAmountString[1]);
-        checkModel.setAmount(Integer.parseInt(value));
-       
-
+        sStringAmountF = formatedAmountString[0];
+        stringAmountF.setText(sStringAmountF);
+        sStringAmountS = formatedAmountString[1];
+        stringAmountS.setText(sStringAmountS);
     }
     private void updateID(String value){
         ID.setText(value);
-        checkModel.setID(Integer.parseInt(value));
     }
     private void updateLocation(String value){
+        sLocation = value;
         Location.setText(value);
-        checkModel.setLocation(value);
     }
     
 }
-
-
-    
-

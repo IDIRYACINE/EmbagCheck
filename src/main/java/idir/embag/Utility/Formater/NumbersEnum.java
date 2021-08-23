@@ -27,7 +27,7 @@ public class NumbersEnum {
         "soixante",
         "Soixante-dix",
         "Quatre-vingts",
-        "Quatre-vingt-dix",
+        "Quatre-vingts",
     };
   public static String[] TenSpecialCase = {
     "dix",

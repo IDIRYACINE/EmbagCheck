@@ -4,9 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
-import javax.print.DocFlavor.STRING;
 
 public abstract class SearchQuery {
     private static ArrayList<String> values = new ArrayList<String>();

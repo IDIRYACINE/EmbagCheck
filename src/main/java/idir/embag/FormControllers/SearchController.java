@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.jfoenix.controls.JFXDialog;
 
 import idir.embag.App;
-import idir.embag.Modules.CheckModel;
+import idir.embag.Models.CheckModel;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
