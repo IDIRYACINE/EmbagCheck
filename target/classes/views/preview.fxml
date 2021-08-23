@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@ModelCCP.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="69.0" layoutY="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="16.5">
+         <font>
+            <Font name="System Bold" size="2.0" />
+         </font>
+      </Text>
+      <Text layoutX="42.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bordj bou arreridj" textAlignment="RIGHT" wrappingWidth="25.0">
+         <font>
+            <Font name="System Bold" size="2.0" />
+         </font>
+      </Text>
+      <Text layoutX="69.5" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" textAlignment="RIGHT" wrappingWidth="15.0">
+         <font>
+            <Font name="System Bold" size="2.0" />
+         </font>
+      </Text>
+      <Text layoutX="15.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bordj bou arreridj" textAlignment="CENTER" wrappingWidth="65.0">
+         <font>
+            <Font name="System Bold" size="2.0" />
+         </font>
+      </Text>
+      <Text layoutX="10.0" layoutY="13.5" strokeType="OUTSIDE" strokeWidth="0.0" text="bordj bou arreridj" wrappingWidth="65.0">
+         <font>
+            <Font name="System Bold" size="2.0" />
+         </font>
+      </Text>
+      <Text layoutX="24.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bordj bou arreridj" wrappingWidth="52.0">
+         <font>
+            <Font name="System Bold" size="2.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

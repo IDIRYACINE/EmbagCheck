@@ -1,5 +1,6 @@
 package idir.embag.FormControllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -13,11 +14,15 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
 
@@ -52,9 +57,13 @@ public class ChekFormController implements Initializable{
     }
 
     @FXML
-    private void Print(Event event){
+    private void Print(Event event) throws IOException{
         CheckPrinter checkPrinter = new CheckPrinter();
-        checkPrinter.Print(checkPane);
+
+        Pane test = FXMLLoader.load(getClass().getResource("/views/preview.fxml")); 
+        Scene scene = new Scene(test);
+        
+        checkPrinter.Print(test);
     }
     @FXML 
     private void CreateCheck(){
@@ -63,7 +72,7 @@ public class ChekFormController implements Initializable{
     }
            
     private String getTime(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");  
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH");  
         LocalDateTime now = LocalDateTime.now();  
         return dtf.format(now) ;
     }

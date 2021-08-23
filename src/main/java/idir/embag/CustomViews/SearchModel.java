@@ -5,7 +5,10 @@ import java.io.IOException;
 import com.jfoenix.controls.JFXDialog;
 
 import idir.embag.FormControllers.SearchController;
+import idir.embag.Modules.CheckModel;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
@@ -25,6 +28,12 @@ public class SearchModel {
     public void show(){
         dialog.show();
     }
+
+    public void setTable(TableView<CheckModel> dataTable, ObservableList<CheckModel> checks) {
+        controller.setUpTable(dataTable , checks);
+    }
+
+   
 
     
 }

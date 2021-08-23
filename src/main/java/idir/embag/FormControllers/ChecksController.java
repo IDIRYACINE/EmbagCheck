@@ -2,6 +2,7 @@ package idir.embag.FormControllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import idir.embag.App;
@@ -40,18 +41,28 @@ public class ChecksController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        DataTable.setItems(checks);
         setUpColumns();
+        refreshChecks();
+        DataTable.setItems(checks);
+
     }
 
     @FXML
     private void newSearchDialog(Event e){
         searchModel.show();
+        searchModel.setTable(DataTable , checks);
+
+
     }
 
     @FXML
-    private void refreshChecks(Event e){
-        App.dHelper.loadData();
+    private void refreshChecks( ){
+        ArrayList<CheckModel> models = App.dHelper.loadData();
+        checks.clear();
+        for (CheckModel checkModel : models) {
+            checks.add(checkModel);
+        }
+        
     }
 
     @FXML
@@ -91,5 +102,6 @@ public class ChecksController implements Initializable{
     private static ObservableList<CheckModel> checks = FXCollections.observableArrayList(
         
     );
+
     
 }

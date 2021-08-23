@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import idir.embag.Modules.CheckModel;
 import idir.embag.Modules.CheckStatus;
@@ -64,8 +65,8 @@ public class Database implements DatabaseInterface{
 
     @Override
     public void Update(CheckModel checkModel) throws SQLException{
-        String UPDATE_STATUS_QUERY = "UPDATE "+TABLE_NAME+" SET status = ? , "
-        + "WHERE id = ?";
+        String UPDATE_STATUS_QUERY = "UPDATE "+TABLE_NAME+" SET status = ?  "
+        + "WHERE id = ? ;";
 
         PreparedStatement qStatement = conn.prepareStatement(UPDATE_STATUS_QUERY) ;
         qStatement.setString(1, checkModel.getStatus());
@@ -89,49 +90,43 @@ public class Database implements DatabaseInterface{
     }
 
     @Override
-    public CheckModel[] RequestData() throws SQLException{
+    public ArrayList<CheckModel> RequestData() throws SQLException{
         String SELECT_CHECK_QUERY = "SELECT * FROM  " + TABLE_NAME ;
-
-        //String SELECT_CHECK_QUERY = "SELECT * FROM  " + TABLE_NAME + selectQueryFormater(fields);
+        
         PreparedStatement qStatement = conn.prepareStatement(SELECT_CHECK_QUERY) ;
         ResultSet resultSet =  qStatement.executeQuery();
-
+     
       
-        return null;
+        return IterateQueryToCheckModel(resultSet, 100);
     }    
 
-    private String selectQueryFormater(String fields ){
-        //having count(distinct personName) = 2"
-        String result = "WHERE ";
-        String[] fieldsList = result.split(",");
-        int length = fieldsList.length ;
-
-        for (int i = 0 ; i < length ; i++){
-            if (i != length-1){
-            result += fieldsList[i] + " = ?" + " and ";}
-            else {
-                result += fieldsList[i] + " = ?"  ;}
-            }
-        
-        return result;
-    }
-
     private CheckModel QueryToCheckModel(ResultSet rSet) throws SQLException{
-        //while(rSet.next()){
             Integer ID = rSet.getInt("id");
             Integer AMOUNT = rSet.getInt("amount");
             String RECEIVER = rSet.getString("receiver");
             String TDATE = rSet.getString("date");
             String LOCATION = rSet.getString("location");
             CheckStatus STATUS = CheckStatus.valueOf(rSet.getString("status"));
-
-            System.out.println("ID : " + ID + " receiver : " + RECEIVER +" amount : " + AMOUNT +
-                            " Location : " + LOCATION + " status : " +STATUS + " date : " +TDATE);
     
-       // }
-          CheckModel model = new CheckModel(RECEIVER, TDATE, AMOUNT, ID, STATUS, LOCATION);
+        return new CheckModel(RECEIVER, TDATE, AMOUNT, ID, STATUS, LOCATION);
+    }
 
-        return model;
+    @Override
+    public ArrayList<CheckModel> Search(String rawQueryString) throws SQLException {
+        String queryString = "SELECT * FROM " + TABLE_NAME + " WHERE ";
+        PreparedStatement statement = SearchQuery.filterRawQuery(rawQueryString,queryString , conn);
+        ResultSet resultSet =  statement.executeQuery();
+        return IterateQueryToCheckModel(resultSet, 100);
+    }
+
+    private  ArrayList<CheckModel> IterateQueryToCheckModel(ResultSet resultSet , int MAX_ITEMS_PER_QUERY ) throws SQLException{
+        ArrayList<CheckModel> models = new ArrayList<CheckModel>();
+        int counter = 0 ;
+        while (resultSet.next() && counter < MAX_ITEMS_PER_QUERY){
+            models.add(QueryToCheckModel(resultSet));
+        }
+        return models;
+
     }
    
    

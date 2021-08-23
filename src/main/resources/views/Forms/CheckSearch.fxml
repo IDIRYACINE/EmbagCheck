@@ -115,7 +115,7 @@ xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:contr
                </HBox.margin>
             </Text>
             <TextField fx:id="DateEndField" />
-            <CheckBox fx:id="Date" mnemonicParsing="false">
+            <CheckBox fx:id="BDate" mnemonicParsing="false">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>

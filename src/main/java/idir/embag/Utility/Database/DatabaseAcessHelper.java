@@ -1,6 +1,7 @@
 package idir.embag.Utility.Database;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import idir.embag.Modules.CheckModel;
 
@@ -32,11 +33,23 @@ public class DatabaseAcessHelper {
         }
     }
 
-    public void loadData() {
+    public ArrayList<CheckModel> loadData() {
+        ArrayList<CheckModel> models = null;
         try {
-            database.RequestData();
+            models = database.RequestData();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return models;
+    }
+
+    public  ArrayList<CheckModel> Search(String queryMetaData) {
+        ArrayList<CheckModel> models = null;
+        try {
+            models = database.Search(queryMetaData);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return models ;
     }
 }
