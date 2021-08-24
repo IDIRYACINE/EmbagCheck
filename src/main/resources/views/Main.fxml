@@ -11,7 +11,7 @@
 
 <Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.FormControllers.MainController">
    <children>
-      <VBox fx:id="leftPanel" alignment="CENTER" prefHeight="720.0" prefWidth="220.0" spacing="20.0" stylesheets="@../css/main.css">
+      <VBox fx:id="leftPanel" alignment="CENTER" prefHeight="720.0" prefWidth="220.0" spacing="20.0" >
       <children>
             <HBox fx:id="dataBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="190.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#dataClicked" prefHeight="50.0" spacing="15.0" styleClass="sidebar-options">
                <children>

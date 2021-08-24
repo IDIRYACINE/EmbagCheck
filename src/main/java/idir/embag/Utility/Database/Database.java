@@ -14,7 +14,7 @@ import idir.embag.Models.CheckStatus;
 public class Database implements DatabaseInterface{
     private  String path ;
     private  final String DATABASE_NAME = "Checks.db"; 
-    private  final String DATABASE_PATH = "/Data/";
+    private  final String DATABASE_PATH = "Data";
     private final String TABLE_NAME = "Checks";
     private  Connection conn ;
 
@@ -25,7 +25,11 @@ public class Database implements DatabaseInterface{
     @Override
     public void Connect() {
         String AbsolutePath = new File("").getAbsolutePath();
-        path =  AbsolutePath + DATABASE_PATH + DATABASE_NAME ;   
+        File directory = new File(DATABASE_PATH);
+        if (! directory.exists()){
+            directory.mkdir();
+        }
+        path =  AbsolutePath + "/" +DATABASE_PATH  +"/"+ DATABASE_NAME ;   
         try{
             conn = DriverManager.getConnection("jdbc:sqlite:"+path);
             if (conn != null){

@@ -23,6 +23,8 @@ public class MainController implements Initializable{
     @FXML
     private StackPane rightPanel ;
     @FXML
+    private VBox leftPanel ;
+    @FXML
     private FontAwesomeIconView checkIcon , dataIcon ;
     @FXML 
     private Label dataLabel , checkLabel ;
@@ -100,8 +102,11 @@ public class MainController implements Initializable{
       activeLabel = dataLabel;
       activeIcon = dataIcon;
       activeBox = dataBox;
+      String css = getClass().getResource("/css/main.css").toExternalForm();
+      leftPanel.getStylesheets().add(css);
       setActiveStyle(dataBox, dataLabel, dataIcon);
       setNode(dataPanel);
+
     };
 
   

@@ -20,7 +20,9 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException{
         dHelper = new DatabaseAcessHelper();
-        Parent root = FXMLLoader.load(getClass().getResource("/views/Main.fxml")); 
+        FXMLLoader loader = new FXMLLoader();
+        loader.load(getClass().getResourceAsStream("/views/Main.fxml"));
+        Parent root = loader.getRoot();
         Scene scene = new Scene(root);
         stage.setTitle("Embag ");
         stage.setScene(scene);          
