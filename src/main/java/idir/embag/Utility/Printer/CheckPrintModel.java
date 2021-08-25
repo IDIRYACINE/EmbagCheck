@@ -15,8 +15,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
 public class CheckPrintModel extends Pane{
-    private Font defaultFont =  new Font("SansSerif", 18f);
-    private Font smallFont = new Font("SansSerif",14f);
+    private static Font defaultFont =  new Font("System", 18f);
+    private static Font smallFont = new Font("SansSerif",14f);
 
     public CheckPrintModel(String amount , String amountStringF ,String amountStringS , String receiver , String location ){
        setUpBounds();
@@ -57,5 +57,4 @@ public class CheckPrintModel extends Pane{
         
     }
 
-    
 }

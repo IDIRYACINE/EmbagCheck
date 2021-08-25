@@ -9,46 +9,50 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.FormControllers.ChekFormController">
    <children>
-      <AnchorPane fx:id="checkPane" maxWidth="620.0" VBox.vgrow="NEVER">
+      <AnchorPane  minHeight="247.6" minWidth="642.3">
          <children>
-            <ImageView fitHeight="353.0" fitWidth="632.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="264.6" fitWidth="642.3" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/ccp.png" />
+                  <Image url="@../../images/check.png" />
                </image>
             </ImageView>
-            <Label fx:id="LDate" layoutX="511.0" layoutY="123.0" prefHeight="24.0" prefWidth="81.0" text="2020.12.28">
+            <Text fx:id="Amount" layoutX="500.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="127.0">
                <font>
-                  <Font name="Serif Bold" size="12.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
-            </Label>
-            <Label fx:id="Location" alignment="CENTER_RIGHT" layoutX="277.0" layoutY="124.0" prefHeight="24.0" prefWidth="206.0" text="Bordj Bou Arereidj">
+            </Text>
+            <Text fx:id="stringAmountF" layoutX="172.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="390.0">
                <font>
-                  <Font name="Serif Bold" size="13.0" />
-               </font></Label>
-            <Label fx:id="Receiver" alignment="CENTER" layoutX="112.0" layoutY="103.0" prefHeight="24.0" prefWidth="470.0" text="IDIR YACINE">
-               <font>
-                  <Font name="Serif Bold" size="13.0" />
-               </font></Label>
-            <Label fx:id="stringAmountS" alignment="CENTER" layoutX="34.0" layoutY="79.0" prefHeight="24.0" prefWidth="501.0" text="decent mill">
-               <font>
-                  <Font name="Serif Bold" size="13.0" />
-               </font></Label>
-            <Label fx:id="Amount" alignment="CENTER" layoutX="493.0" layoutY="23.0" prefHeight="24.0" prefWidth="127.0" text="200.200.200.200">
-               <font>
-                  <Font name="Serif Bold" size="13.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
-            </Label>
-            <Label fx:id="ID" alignment="CENTER" layoutX="43.0" layoutY="38.0" prefHeight="24.0" prefWidth="127.0" text="2000.2000.2000">
+            </Text>
+            <Text fx:id="stringAmountS" layoutX="31.0" layoutY="77.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" wrappingWidth="530.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="Receiver" layoutX="110.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200.200.200" textAlignment="CENTER" wrappingWidth="480.0">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fx:id="LDate" layoutX="516.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2030/13/45" wrappingWidth="92.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="Location" layoutX="315.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOrdj BOur arreridj" textAlignment="RIGHT" wrappingWidth="180.0">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Text>
+            <Label fx:id="ID1" alignment="CENTER" layoutX="60.0" layoutY="20.0" prefHeight="24.0" prefWidth="100.0" text="2000.2000.2000">
                <font>
                   <Font name="Serif Bold" size="10.0" />
-               </font>
-            </Label>
-            <Label fx:id="stringAmountF" alignment="CENTER" layoutX="175.0" layoutY="55.0" prefHeight="24.0" prefWidth="375.0" text="decent mill">
-               <font>
-                  <Font name="Serif Bold" size="13.0" />
                </font>
             </Label>
          </children>

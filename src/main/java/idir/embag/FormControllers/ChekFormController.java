@@ -38,6 +38,7 @@ public class ChekFormController implements Initializable{
     AnchorPane checkPane;
 
     private String sReceiver , sAmount , sStringAmountF,sStringAmountS,sLocation,sDate;
+    private Label currentLabel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -47,6 +48,7 @@ public class ChekFormController implements Initializable{
        LocationField.textProperty().addListener(changeListener);
        sDate = getTime();
        LDate.setText(sDate);
+       currentLabel = stringAmountF;
     }
 
     @FXML
@@ -101,7 +103,7 @@ public class ChekFormController implements Initializable{
     private void updateAmount (String value){
         sAmount = value ;
         Amount.setText(value);
-        String[] formatedAmountString = CheckFormater.NumParser(value) ;
+        String[] formatedAmountString = CheckFormater.NumParser(value , currentLabel ) ;
         sStringAmountF = formatedAmountString[0];
         stringAmountF.setText(sStringAmountF);
         sStringAmountS = formatedAmountString[1];
