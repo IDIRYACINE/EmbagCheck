@@ -1,4 +1,4 @@
-package idir.embag.Utility.Formater;
+package idir.embag.Utility.NumToStringFormater;
 
 public class NumbersEnum {
     public static String HUNDRED = " cent ";

@@ -4,14 +4,14 @@ package idir.embag.Models.CheckDataModel;
 public class CheckModel{
     private String receiver ;
     private String date ;
-    private Integer amount ;
+    private Double amount ;
     private Integer ID ;
     private CheckStatus status ;
     private String location ;
 
     
 
-    public CheckModel(String receiver, String date, Integer amount, Integer iD, CheckStatus status , String location) {
+    public CheckModel(String receiver, String date, Double amount, Integer iD, CheckStatus status , String location) {
         this.setReceiver(receiver);
         this.date = date;
         this.setAmount(amount);
@@ -28,11 +28,11 @@ public class CheckModel{
         this.receiver = receiver;
     }
 
-    public Integer getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Integer amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 

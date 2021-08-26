@@ -1,4 +1,4 @@
-package idir.embag.Utility.Formater;
+package idir.embag.Utility.NumToStringFormater;
 
 import java.util.ArrayList;
 import java.util.Arrays;

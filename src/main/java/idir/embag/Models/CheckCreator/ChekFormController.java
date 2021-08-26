@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 import idir.embag.Models.CheckDataModel.CheckModel;
 import idir.embag.Models.CheckDataModel.CheckStatus;
 import idir.embag.Models.CheckListDisplay.ChecksController;
-import idir.embag.Utility.Formater.CheckFormater;
+import idir.embag.Utility.NumToStringFormater.CheckFormater;
 import idir.embag.Utility.Printer.CheckPrintModel;
 import idir.embag.Utility.Printer.CheckPrinter;
 import javafx.beans.value.ChangeListener;
@@ -61,7 +61,7 @@ public class ChekFormController implements Initializable{
     }
     @FXML 
     private void CreateCheck(){
-        Integer amount = Integer.parseInt(Amount.getText());
+        Double amount = Double.parseDouble(sAmount);
         Integer id = Integer.parseInt(ID.getText());
         CheckModel checkModel  = new CheckModel(sReceiver, sDate, amount, id, CheckStatus.Attendu, sLocation);
         ChecksController.addCheck(checkModel);
@@ -102,7 +102,8 @@ public class ChekFormController implements Initializable{
         Receiver.setText(value);
     }
     private void updateAmount (String value){
-        sAmount = value ;
+        //sAmount = value ;
+        sAmount = value.replace(",", ".");
         Amount.setText(value);
         String[] formatedAmountString = CheckFormater.NumParser(value , currentLabel ) ;
         sStringAmountF = formatedAmountString[0];

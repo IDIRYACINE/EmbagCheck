@@ -1,4 +1,4 @@
-package idir.embag.Utility.Formater;
+package idir.embag.Utility.NumToStringFormater;
 
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;

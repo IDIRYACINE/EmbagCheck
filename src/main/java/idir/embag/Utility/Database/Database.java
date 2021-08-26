@@ -48,7 +48,7 @@ public class Database implements DatabaseInterface{
         + "	receiver text NOT NULL,\n"
         + "	date text NOT NULL,\n"
         + "	location text NOT NULL,\n"
-        + "	amount integer NOT NULL,\n"
+        + "	amount REAL NOT NULL,\n"
         + "	status text NOT NULL\n"
         + ");";
         
@@ -85,7 +85,7 @@ public class Database implements DatabaseInterface{
         qStatement.setString(1,checkModel.getDate());
         qStatement.setInt(2,checkModel.getID());
         qStatement.setString(3,checkModel.getReceiver());
-        qStatement.setInt(4,checkModel.getAmount());
+        qStatement.setDouble(4,checkModel.getAmount());
         qStatement.setString(5,checkModel.getStatus());
         qStatement.setString(6,checkModel.getLocation());
         qStatement.executeUpdate();
@@ -105,7 +105,7 @@ public class Database implements DatabaseInterface{
 
     private CheckModel QueryToCheckModel(ResultSet rSet) throws SQLException{
             Integer ID = rSet.getInt("id");
-            Integer AMOUNT = rSet.getInt("amount");
+            Double AMOUNT = rSet.getDouble("amount");
             String RECEIVER = rSet.getString("receiver");
             String TDATE = rSet.getString("date");
             String LOCATION = rSet.getString("location");

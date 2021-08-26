@@ -3,6 +3,8 @@ package idir.embag;
 
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import idir.embag.Utility.Database.DatabaseAcessHelper;
 import javafx.application.Application;
@@ -16,10 +18,11 @@ import javafx.stage.Stage;
  * JavaFX App
  */
 public class App extends Application {
-    public static DatabaseAcessHelper dHelper ;
+    public static DatabaseAcessHelper dHelper = new DatabaseAcessHelper();;
+    public static ExecutorService executorService = Executors.newSingleThreadExecutor();
+    
     @Override
     public void start(Stage stage) throws IOException{
-        dHelper = new DatabaseAcessHelper();
         FXMLLoader loader = new FXMLLoader();
         loader.load(getClass().getResourceAsStream("/views/Main.fxml"));
         Parent root = loader.getRoot();

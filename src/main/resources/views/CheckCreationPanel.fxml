@@ -10,14 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" 
-prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.Models.CheckCreator.ChekFormController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.Models.CheckCreator.ChekFormController">
    <children>
       <AnchorPane minHeight="247.6" minWidth="642.3">
          <children>
             <ImageView fitHeight="264.6" fitWidth="642.3" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/check.png" />
+                  <Image url="@../images/check.png" />
                </image>
             </ImageView>
             <Label fx:id="LDate" layoutX="526.0" layoutY="107.0" prefHeight="24.0" prefWidth="81.0" text="2020.12.28">
