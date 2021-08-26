@@ -119,7 +119,7 @@ public class Database implements DatabaseInterface{
         String queryString = "SELECT * FROM " + TABLE_NAME + " WHERE ";
         PreparedStatement statement = SearchQuery.filterRawQuery(rawQueryString,queryString , conn);
         ResultSet resultSet =  statement.executeQuery();
-        return IterateQueryToCheckModel(resultSet, 100);
+        return IterateQueryToCheckModel(resultSet, 1000);
     }
 
     private  ArrayList<CheckModel> IterateQueryToCheckModel(ResultSet resultSet , int MAX_ITEMS_PER_QUERY ) throws SQLException{
