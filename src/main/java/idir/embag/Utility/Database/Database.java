@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import idir.embag.Models.CheckModel;
-import idir.embag.Models.CheckStatus;
+import idir.embag.Models.CheckDataModel.CheckModel;
+import idir.embag.Models.CheckDataModel.CheckStatus;
 
 public class Database implements DatabaseInterface{
     private  String path ;

@@ -39,8 +39,8 @@ public class CheckFormater {
 
         if (length < 4){
             UnitParser(principleNums,1);
-            CheckTruncation(principleNums, currentLabel ,result);
             mergeArrayList(principleNums , secondaryNums);
+            CheckTruncation(principleNums, currentLabel ,result);
         }
         else {
             if (length < 7){
@@ -76,9 +76,10 @@ public class CheckFormater {
 
     private static void mergeArrayList( ArrayList<String> principleNums ,  ArrayList<String> secondaryNums){
         int arrayLength = 0 ;
-        if (secondaryNums.size() > 0){
-            arrayLength = principleNums.size();
-            CURRENCY_INSERTION_INDEX.add(arrayLength);
+        arrayLength = principleNums.size();
+        CURRENCY_INSERTION_INDEX.add(arrayLength);
+       
+        if (secondaryNums.size() > 1){
             arrayLength = secondaryNums.size() + principleNums.size() + 1;
             CURRENCY_INSERTION_INDEX.add(arrayLength);
             principleNums.addAll(secondaryNums);
@@ -173,9 +174,9 @@ public class CheckFormater {
             overRun = text.getLayoutBounds().getWidth() > labelWidth ;
 
             if (overRun) {
-                result[labelIndex] = stringNumbersManager(nums, startIndex , endIndex );
+                result[labelIndex] = stringNumbersManager(nums, startIndex , endIndex -1);
                 labelIndex =  1 ;
-                result[labelIndex] = stringNumbersManager(nums,  endIndex , limit);
+                result[labelIndex] = stringNumbersManager(nums,  endIndex -1, limit);
                 return ;
             }
         }

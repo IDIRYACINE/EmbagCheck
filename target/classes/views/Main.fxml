@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.FormControllers.MainController">
+<Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.Models.MainController">
    <children>
       <VBox fx:id="leftPanel" alignment="CENTER" prefHeight="720.0" prefWidth="220.0" spacing="20.0" >
       <children>

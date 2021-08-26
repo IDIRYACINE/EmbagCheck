@@ -9,7 +9,12 @@ module idir.embag {
     requires de.jensd.fx.glyphs.fontawesome;
     requires de.jensd.fx.glyphs.materialdesignicons;
     opens idir.embag to javafx.fxml;
-    opens idir.embag.FormControllers to javafx.fxml;
-    opens idir.embag.Models to javafx.base;
+    opens idir.embag.Models.CheckCreator to javafx.base,javafx.fxml;
+    opens idir.embag.Models.CheckListDisplay to javafx.base,javafx.fxml;
+    opens idir.embag.Models.CheckObserver  to javafx.base,javafx.fxml;
+    opens idir.embag.Models.CheckSearch to javafx.base,javafx.fxml;
+    opens idir.embag.Models to javafx.base,javafx.fxml;
+    opens idir.embag.Models.CheckDataModel to javafx.base,javafx.fxml;
+
     exports idir.embag;
 }
