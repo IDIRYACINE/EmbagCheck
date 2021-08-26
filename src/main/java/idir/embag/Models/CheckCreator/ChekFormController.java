@@ -102,7 +102,8 @@ public class ChekFormController implements Initializable{
         Receiver.setText(value);
     }
     private void updateAmount (String value){
-        //sAmount = value ;
+
+        value = CheckFormater.spaceFormater(value);
         sAmount = value.replace(",", ".");
         Amount.setText(value);
         String[] formatedAmountString = CheckFormater.NumParser(value , currentLabel ) ;

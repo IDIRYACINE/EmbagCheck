@@ -11,6 +11,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
@@ -48,13 +49,26 @@ public class CheckPrintModel extends Pane{
         children.add(createLabel(receiver, 480, TextAlignment.CENTER, defaultFont, 110, 106));
         children.add(createLabel(location, 180, TextAlignment.RIGHT, smallFont, 315, 125));
         children.add(createLabel(getDate(), 92, TextAlignment.RIGHT, smallFont, 516, 125));
+        children.add(createLineBar(4, 6, 0, 54, 23, 0));
+        children.add(createLineBar(14, 21, -10, 60, 24, -10));
+
     }
 
     private String getDate(){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
         LocalDateTime now = LocalDateTime.now();  
         return dtf.format(now) ;
-        
+    }
+
+    private Line createLineBar(double Xset , double Yset , double Xstart ,double Xend , double Ystart , double Yend){
+        Line line = new Line();
+        line.setStartX(Xstart);
+        line.setStartY(Ystart);
+        line.setEndX(Xend);
+        line.setEndY(Yend);
+        line.setLayoutX(Xset);
+        line.setLayoutY(Yset);
+        return line ;
     }
 
 }

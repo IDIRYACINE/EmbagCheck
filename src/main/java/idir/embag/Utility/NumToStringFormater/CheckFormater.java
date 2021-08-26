@@ -24,6 +24,20 @@ public class CheckFormater {
         return pattern+value+pattern;
     } 
 
+    public static String spaceFormater(String value){
+        int length = value.length();
+        String result = value;
+
+        if (length == 6){
+            result =  value.substring(0,3) + " " +  value.substring(3)  ;
+        }
+        else if (length > 6){
+            result = value.substring(0,3) + " " +  value.substring(3, 6) + " " +  value.substring(6);
+        }
+        
+        return result;     
+    }
+
     public static String[] NumParser(String value , Label currentLabel ){
         value = value.replace(",", ",0");
         String[] stringNums = value.split(",");
