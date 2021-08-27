@@ -68,7 +68,7 @@ public class ChekFormController implements Initializable{
     }
            
     private String getTime(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");  
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");  
         LocalDateTime now = LocalDateTime.now();  
         return dtf.format(now) ;
     }
@@ -102,9 +102,9 @@ public class ChekFormController implements Initializable{
         Receiver.setText(value);
     }
     private void updateAmount (String value){
-
+       
         value = CheckFormater.spaceFormater(value);
-        sAmount = value.replace(",", ".");
+        sAmount = value;
         Amount.setText(value);
         String[] formatedAmountString = CheckFormater.NumParser(value , currentLabel ) ;
         sStringAmountF = formatedAmountString[0];
