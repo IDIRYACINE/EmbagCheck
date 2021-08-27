@@ -8,7 +8,6 @@ import java.util.concurrent.Future;
 
 import idir.embag.App;
 import idir.embag.Models.CheckDataModel.CheckModel;
-import javafx.util.Callback;
 
 public class DatabaseAcessHelper {
     private  DatabaseInterface database ; 

@@ -2,12 +2,7 @@ package idir.embag.Utility.Printer;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-
-import javax.swing.GroupLayout.Alignment;
-
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;

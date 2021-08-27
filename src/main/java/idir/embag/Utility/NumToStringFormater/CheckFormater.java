@@ -1,14 +1,11 @@
 package idir.embag.Utility.NumToStringFormater;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javafx.scene.control.Label;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 
 
 public class CheckFormater {
@@ -106,7 +103,7 @@ public class CheckFormater {
         
         if (secondaryNums.size() > 0){
             arrayLength = secondaryNums.size() + principleNums.size() +1;
-            CURRENCY_INSERTION_INDEX.add(arrayLength);
+            if(!secondaryNums.get(0).equals("")){CURRENCY_INSERTION_INDEX.add(arrayLength);}
             principleNums.addAll(secondaryNums);
         }
     }
@@ -144,7 +141,7 @@ public class CheckFormater {
             limit = CURRENT_UNIT + 3 - loss ;
             int[] unitParsingCache = DefaultParser(index, limit, stringNums) ;
             String tempValue = stringNums.get(unitParsingCache[0]);
-            stringNums.set(unitParsingCache[0], tempValue + UnitDecoder(i,unitCount));
+            stringNums.set(unitParsingCache[0], tempValue + UnitDecoder(i,unitCount-1));
             CURRENT_UNIT += 3 ;
             index = limit ;
         }
@@ -155,21 +152,17 @@ public class CheckFormater {
         int resultIndex = 0 ;
         int[] LENGTH_THREE_CASE = {2,1,0};
         int[] LENGTH_TWO_CASE = {1,0,2};
-        if (length == 2){
-            resultIndex = LENGTH_TWO_CASE[current];
-        }
-        else if (length == 3){
-            resultIndex = LENGTH_THREE_CASE[current];
-        }
-
+        int[][] DECODE_MODES = {{0},LENGTH_TWO_CASE ,LENGTH_THREE_CASE};
+        resultIndex = DECODE_MODES[length][current];
         return unitEnums[resultIndex];
     }
 
     private static String Parse(int  num , int power){
         String result = "";
-        String[][] NUMS_CATALOG = {NumbersEnum.Units , NumbersEnum.Tens , NumbersEnum.Units,NumbersEnum.TenSpecialCase};
-        String[] UNIT_MODIFIER = {NumbersEnum.HUNDRED , "-" , " "," "};
-        result = NUMS_CATALOG[power][num] + UNIT_MODIFIER[power];
+        String[][] NUMS_CATALOG = {NumbersEnum.Hundreds , NumbersEnum.Tens , NumbersEnum.Units,NumbersEnum.TenSpecialCase};
+        String[] UNIT_MODIFIER = {NumbersEnum.HUNDRED , " " , " "," "};
+        result = NUMS_CATALOG[power][num] ;
+        if(result !=""){result +=UNIT_MODIFIER[power];}
         return result;
     }
 

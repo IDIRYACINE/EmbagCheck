@@ -28,6 +28,19 @@ public class NumbersEnum {
         "Quatre-vingts",
         "Quatre-vingts",
     };
+    public static String[] Hundreds = {
+      "",
+      "",
+      "deux",
+      "trois",
+      "quatre",
+      "cinq",
+      "six",
+      "sept",
+      "huit",
+      "neuf",
+    };
+
   public static String[] TenSpecialCase = {
     "dix",
     "onze",
