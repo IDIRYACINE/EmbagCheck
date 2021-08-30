@@ -11,8 +11,8 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 
 public class CheckPrintModel extends Pane{
-    private static Font defaultFont =  new Font("System", 18f);
-    private static Font smallFont = new Font("SansSerif",14f);
+    private static Font defaultFont =  new Font("Serif Bold", 13f);
+    private static Font smallFont = new Font("Serif Bold",12f);
 
     public CheckPrintModel(String amount , String amountStringF ,String amountStringS , String receiver , String location ){
        setUpBounds();
@@ -38,6 +38,7 @@ public class CheckPrintModel extends Pane{
 
     private void setUpLabels(String amount , String amountStringF ,String amountStringS , String receiver , String location ){
         ObservableList<Node> children =  getChildren();
+        
         children.add(createLabel(amount, 127, TextAlignment.LEFT, defaultFont, 500, 24));
         children.add(createLabel(amountStringF, 390, TextAlignment.LEFT, defaultFont, 172, 53));
         children.add(createLabel(amountStringS, 530, TextAlignment.LEFT, defaultFont, 31, 77));

@@ -1,5 +1,6 @@
 package idir.embag.Models.CheckCreator;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -16,11 +17,14 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 
 import java.time.format.DateTimeFormatter;  
@@ -35,8 +39,7 @@ public class ChekFormController implements Initializable{
     private Label LDate,Receiver,Amount,stringAmountF,stringAmountS,ID,Location;
     @FXML
     private TextField ReceiverField, IDField,LocationField,AmountField;
-    @FXML
-    AnchorPane checkPane;
+   
 
     private String sReceiver , sAmount , sStringAmountF,sStringAmountS,sLocation,sDate;
     private Label currentLabel;
@@ -61,7 +64,7 @@ public class ChekFormController implements Initializable{
     }
     @FXML 
     private void CreateCheck(){
-        Double amount = Double.parseDouble(sAmount);
+        Double amount = Double.parseDouble(sAmount.replace(" ", ""));
         Integer id = Integer.parseInt(ID.getText());
         CheckModel checkModel  = new CheckModel(sReceiver, sDate, amount, id, CheckStatus.Attendu, sLocation);
         ChecksController.addCheck(checkModel);
@@ -106,7 +109,7 @@ public class ChekFormController implements Initializable{
         value = CheckFormater.spaceFormater(value);
         sAmount = value;
         Amount.setText(value);
-        String[] formatedAmountString = CheckFormater.NumParser(value , currentLabel ) ;
+        String[] formatedAmountString = CheckFormater.numToStringFormat(value , currentLabel ) ;
         sStringAmountF = formatedAmountString[0];
         stringAmountF.setText(sStringAmountF);
         sStringAmountS = formatedAmountString[1];

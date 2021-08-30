@@ -10,6 +10,7 @@ module idir.embag {
     requires de.jensd.fx.glyphs.materialdesignicons;
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml ;
+    requires javafx.swing;
     opens idir.embag to javafx.fxml;
     opens idir.embag.Models.CheckCreator to javafx.base,javafx.fxml;
     opens idir.embag.Models.CheckListDisplay to javafx.base,javafx.fxml;

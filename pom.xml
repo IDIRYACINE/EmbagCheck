@@ -34,7 +34,13 @@
         <artifactId>sqlite-jdbc</artifactId>
         <version>3.36.0.1</version>
     </dependency>
-  
+    
+  <dependency>
+    <groupId>org.openjfx</groupId>
+    <artifactId>javafx-swing</artifactId>
+    <version>18-ea+2</version>
+</dependency>
+
     <dependency>
             <groupId>de.jensd</groupId>
             <artifactId>fontawesomefx-materialdesignfont</artifactId>

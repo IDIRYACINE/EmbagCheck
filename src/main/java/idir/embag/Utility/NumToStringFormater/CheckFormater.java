@@ -1,10 +1,11 @@
 package idir.embag.Utility.NumToStringFormater;
+/*
+    a unit is three numbers example : 096 , 122
 
+*/
 import java.util.ArrayList;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import javafx.scene.control.Label;
 
 
@@ -56,10 +57,10 @@ public class CheckFormater {
         return result;     
     }
 
-    public static String[] NumParser(String value , Label currentLabel ){        
+    public static String[] numToStringFormat(String value , Label currentLabel ){        
         String[] result = {"",""};
-        UnitParser(secondaryNums,1);
-        UnitParser(principleNums,unitCount);
+        numParser(secondaryNums,1);
+        numParser(principleNums,unitCount);
         mergeMainAndSecondaryCurrency(principleNums , secondaryNums);
         CheckTruncation(principleNums, currentLabel ,result);
     
@@ -77,11 +78,11 @@ public class CheckFormater {
 
     private static void splitMainAndSecondaryCurrency(String value) {
         String[] stringNums = value.split(",");
-        principleNums = NumbersFilter(stringNums,0);
-        secondaryNums = NumbersFilter(stringNums,1);
+        principleNums = numbersFilter(stringNums,0);
+        secondaryNums = numbersFilter(stringNums,1);
     }
 
-    private static ArrayList<String> NumbersFilter(String[] stringNums , int index ){ 
+    private static ArrayList<String> numbersFilter(String[] stringNums , int index ){ 
     
         ArrayList<String> arrayList =  new ArrayList<String>();
         if (index < stringNums.length ){
@@ -103,13 +104,14 @@ public class CheckFormater {
         
         if (secondaryNums.size() > 0){
             arrayLength = secondaryNums.size() + principleNums.size() +1;
+            System.out.println(secondaryNums);
             if(!secondaryNums.get(0).equals("")){CURRENCY_INSERTION_INDEX.add(arrayLength);}
             principleNums.addAll(secondaryNums);
         }
     }
 
 
-    private static int[] DefaultParser(int index , int limit, ArrayList<String> stringNums){
+    private static int[] unitParser(int index , int limit, ArrayList<String> stringNums){
         int length = stringNums.size() < limit ? stringNums.size() : limit;
         int power = 0 ;
         for (int i =  3 - length - index ; i > 0 ; i--){
@@ -119,7 +121,7 @@ public class CheckFormater {
         while (index < length ){            
             num = Integer.parseInt(stringNums.get(index));
             specialCase = ((num == 1) || (num == 9) || (num == 7)) && (power == 1);
-            stringNums.set(index ,Parse(num, power));
+            stringNums.set(index ,DigitToString(num, power));
             if (specialCase){power = 2 ;}
             index++;
             power++;
@@ -131,7 +133,7 @@ public class CheckFormater {
     }
 
 
-    private static void UnitParser(ArrayList<String> stringNums , int unitCount){
+    private static void numParser(ArrayList<String> stringNums , int unitCount){
         if (stringNums.size()<1){return;}
         int CURRENT_UNIT = 0 ;
         int loss = unitCount * 3 - stringNums.size();
@@ -139,15 +141,15 @@ public class CheckFormater {
         int index = 0 ;
         for (int i = 0 ; i < unitCount ; i++){
             limit = CURRENT_UNIT + 3 - loss ;
-            int[] unitParsingCache = DefaultParser(index, limit, stringNums) ;
+            int[] unitParsingCache = unitParser(index, limit, stringNums) ;
             String tempValue = stringNums.get(unitParsingCache[0]);
-            stringNums.set(unitParsingCache[0], tempValue + UnitDecoder(i,unitCount-1));
+            stringNums.set(unitParsingCache[0], tempValue + unitModifierSelector(i,unitCount-1));
             CURRENT_UNIT += 3 ;
             index = limit ;
         }
     }
 
-    private static String UnitDecoder(int current , int length){
+    private static String unitModifierSelector(int current , int length){
         String[] unitEnums = {"",NumbersEnum.THOUSANDS , NumbersEnum.Millions};
         int resultIndex = 0 ;
         int[] LENGTH_THREE_CASE = {2,1,0};
@@ -157,7 +159,7 @@ public class CheckFormater {
         return unitEnums[resultIndex];
     }
 
-    private static String Parse(int  num , int power){
+    private static String DigitToString(int  num , int power){
         String result = "";
         String[][] NUMS_CATALOG = {NumbersEnum.Hundreds , NumbersEnum.Tens , NumbersEnum.Units,NumbersEnum.TenSpecialCase};
         String[] UNIT_MODIFIER = {NumbersEnum.HUNDRED , " " , " "," "};
