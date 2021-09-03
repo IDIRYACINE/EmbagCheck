@@ -164,7 +164,9 @@ public class CheckFormater {
         String[][] NUMS_CATALOG = {NumbersEnum.Hundreds , NumbersEnum.Tens , NumbersEnum.Units,NumbersEnum.TenSpecialCase};
         String[] UNIT_MODIFIER = {NumbersEnum.HUNDRED , " " , " "," "};
         result = NUMS_CATALOG[power][num] ;
-        if(result !=""){result +=UNIT_MODIFIER[power];}
+        if((result !="")&&(result != "cent ")){
+            result +=UNIT_MODIFIER[power];
+        }
         return result;
     }
 

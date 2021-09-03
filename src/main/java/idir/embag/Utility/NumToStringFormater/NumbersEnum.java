@@ -30,7 +30,7 @@ public class NumbersEnum {
     };
     public static String[] Hundreds = {
       "",
-      "",
+      "cent ",
       "deux",
       "trois",
       "quatre",
