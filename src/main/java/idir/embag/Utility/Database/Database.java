@@ -1,5 +1,6 @@
 package idir.embag.Utility.Database;
 import java.io.File;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -105,7 +106,7 @@ public class Database implements DatabaseInterface{
 
     private CheckModel QueryToCheckModel(ResultSet rSet) throws SQLException{
             Integer ID = rSet.getInt("id");
-            Double AMOUNT = rSet.getDouble("amount");
+            BigDecimal AMOUNT = BigDecimal.valueOf(rSet.getDouble("amount"));
             String RECEIVER = rSet.getString("receiver");
             String TDATE = rSet.getString("date");
             String LOCATION = rSet.getString("location");

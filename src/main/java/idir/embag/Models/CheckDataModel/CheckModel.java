@@ -1,17 +1,16 @@
 package idir.embag.Models.CheckDataModel;
 
+import java.math.BigDecimal;
 
 public class CheckModel{
     private String receiver ;
     private String date ;
-    private Double amount ;
+    private BigDecimal amount ;
     private Integer ID ;
     private CheckStatus status ;
     private String location ;
 
-    
-
-    public CheckModel(String receiver, String date, Double amount, Integer iD, CheckStatus status , String location) {
+    public CheckModel(String receiver, String date, BigDecimal amount, Integer iD, CheckStatus status , String location) {
         this.setReceiver(receiver);
         this.date = date;
         this.setAmount(amount);
@@ -29,10 +28,10 @@ public class CheckModel{
     }
 
     public Double getAmount() {
-        return amount;
+        return amount.doubleValue();
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

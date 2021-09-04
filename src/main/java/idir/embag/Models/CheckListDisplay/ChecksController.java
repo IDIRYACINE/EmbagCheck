@@ -1,6 +1,7 @@
 package idir.embag.Models.CheckListDisplay;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -26,7 +27,9 @@ public class ChecksController implements Initializable{
     @FXML
     private TableColumn<CheckModel,String> Date,Receiver ;
     @FXML
-    private TableColumn<CheckModel,Integer> ID ,Amount;
+    private TableColumn<CheckModel,Integer> ID ;
+    @FXML
+    private TableColumn<CheckModel,BigDecimal> Amount;
     @FXML
     private TableColumn<CheckModel,CheckStatus> Status ;
 
@@ -76,7 +79,7 @@ public class ChecksController implements Initializable{
    
 
     private void setUpColumns(){
-        Amount.setCellValueFactory(new PropertyValueFactory<CheckModel,Integer>("amount"));
+        Amount.setCellValueFactory(new PropertyValueFactory<CheckModel,BigDecimal>("amount"));
         Date.setCellValueFactory(new PropertyValueFactory<CheckModel,String>("date"));
         Receiver.setCellValueFactory(new PropertyValueFactory<CheckModel,String>("receiver"));
         Status.setCellValueFactory(new PropertyValueFactory<CheckModel,CheckStatus>("status"));

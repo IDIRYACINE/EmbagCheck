@@ -2,6 +2,7 @@ package idir.embag.Models.CheckCreator;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -64,7 +65,7 @@ public class ChekFormController implements Initializable{
     }
     @FXML 
     private void CreateCheck(){
-        Double amount = Double.parseDouble(sAmount.replace(" ", ""));
+        BigDecimal amount =BigDecimal.valueOf(Double.parseDouble(sAmount.replace(" ", "")));
         Integer id = Integer.parseInt(ID.getText());
         CheckModel checkModel  = new CheckModel(sReceiver, sDate, amount, id, CheckStatus.Attendu, sLocation);
         ChecksController.addCheck(checkModel);
