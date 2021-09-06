@@ -51,7 +51,7 @@ public class CheckPrintModel extends Pane{
     }
 
     private String getDate(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");  
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");  
         LocalDateTime now = LocalDateTime.now();  
         return dtf.format(now) ;
     }

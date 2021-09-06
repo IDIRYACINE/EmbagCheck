@@ -2,23 +2,38 @@ package idir.embag.Utility.Printer;
 
 
 
+import idir.embag.Utility.Printer.PrinterSelection.PrinterSelectorModel;
 import javafx.print.PageLayout;
-import javafx.print.PageOrientation;
-import javafx.print.Paper;
 import javafx.print.Printer;
-import javafx.print.PrinterAttributes;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
+import javafx.scene.layout.StackPane;
 import javafx.scene.transform.Scale;
 import javafx.stage.Window;
 
 
 public class CheckPrinter {
+    private Node node ;
+    private StackPane pane ;
+    private PageLayout pageLayout;
 
-    public void Print(Node node){
-    
-        Printer printer = Printer.getDefaultPrinter();
-        PageLayout pageLayout =  printer.getDefaultPageLayout();//printer.createPageLayout(Paper.A4, PageOrientation.PORTRAIT,0.75,0.75,0.01,0);
+    public CheckPrinter(Node node , StackPane pane){
+        this.node = node ;
+        this.pane = pane;
+    }
+
+    public void printDialog(){
+        if (Printer.getAllPrinters().size() > 0 ){
+        PrinterSelectorModel printerSelectorModel = new PrinterSelectorModel(pane , this);
+        printerSelectorModel.show();
+        }
+    }
+
+    public void setPageLayout(PageLayout pLayout){
+        pageLayout = pLayout;
+    }
+
+    public void print(){
         // Printable area
         double pWidth = pageLayout.getPrintableWidth();
         double pHeight = pageLayout.getPrintableHeight();
@@ -42,16 +57,15 @@ public class CheckPrinter {
         PrinterJob job =  PrinterJob.createPrinterJob();
 
         if (job != null) {
-            Window winodw = node.getScene().getWindow();
-          job.showPrintDialog(winodw);
+          //  Window winodw = node.getScene().getWindow();
+         // job.showPrintDialog(winodw);
           job.printPage(node);
           job.endJob();
             
         }
 
-      
-        
-    }
+      }
+    
 
 
   

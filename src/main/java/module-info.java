@@ -18,6 +18,7 @@ module idir.embag {
     opens idir.embag.Models.CheckSearch to javafx.base,javafx.fxml;
     opens idir.embag.Models to javafx.base,javafx.fxml;
     opens idir.embag.Models.CheckDataModel to javafx.base,javafx.fxml;
+    opens idir.embag.Utility.Printer.PrinterSelection to javafx.base , javafx.fxml;
 
     exports idir.embag;
 }

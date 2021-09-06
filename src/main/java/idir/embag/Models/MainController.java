@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import idir.embag.App;
 import idir.embag.Models.CheckListDisplay.ChecksController;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -43,6 +44,7 @@ public class MainController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
           try {
             loadPanels();
+            App.stackPane = rightPanel;
           } catch (IOException e) {
             e.printStackTrace();
           }

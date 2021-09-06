@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import idir.embag.App;
 import idir.embag.Models.CheckDataModel.CheckModel;
 import idir.embag.Models.CheckDataModel.CheckStatus;
 import idir.embag.Models.CheckListDisplay.ChecksController;
@@ -18,15 +19,12 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
@@ -58,10 +56,11 @@ public class ChekFormController implements Initializable{
 
     @FXML
     private void Print(Event event) throws IOException{
-        CheckPrinter checkPrinter = new CheckPrinter();
         CheckPrintModel printModel = new CheckPrintModel(sAmount,sStringAmountF,sStringAmountS,sReceiver,sLocation); 
         Scene scene = new Scene(printModel);
-        checkPrinter.Print(printModel);
+        CheckPrinter checkPrinter = new CheckPrinter(printModel,App.stackPane);
+        checkPrinter.printDialog();
+
     }
     @FXML 
     private void CreateCheck(){
