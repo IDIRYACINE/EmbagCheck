@@ -48,9 +48,10 @@ public class PrinterSelectorModel  {
        
     }
 
-    public void createPageLayout(Printer printer , PageOrientation pageOrientation, int leftMargin , int rightMargin ,int topMargin, int bottomMargin){
+    public void createPageLayout(Printer printer , PageOrientation pageOrientation, double leftMargin , double rightMargin ,double topMargin, double bottomMargin){
         PageLayout pageLayout = printer.createPageLayout(Paper.A4, pageOrientation, topMargin,bottomMargin,leftMargin,rightMargin);
         checkPrinter.setPageLayout(pageLayout);
+        checkPrinter.print();
     }
 
 

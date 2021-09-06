@@ -48,7 +48,7 @@ xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:contr
             <TextField fx:id="RightMargin" maxWidth="100.0" />
          </children>
       </HBox>
-      <Button fx:id="ConfirmButton" layoutX="428.0" layoutY="307.0" mnemonicParsing="false" text="Confirmer" />
-      <Button fx:id="CancelButton" layoutX="174.0" layoutY="307.0" mnemonicParsing="false" text="Annuler" />
+      <Button onAction ="#print" layoutX="428.0" layoutY="307.0" mnemonicParsing="false" text="Confirmer" />
+      <Button onAction="#close" layoutX="174.0" layoutY="307.0" mnemonicParsing="false" text="Annuler" />
    </children>
 </Pane>

@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
@@ -31,7 +32,7 @@ public class PrinterSelectionController  implements Initializable{
     private final HashMap <String , Printer> printersMap = new HashMap<String ,Printer>();
     private final ToggleGroup pageOreintationToggle = new ToggleGroup();
     private String selectedPrinterName ;
-    private int topMargin,bottomMargin,leftMargin,rightMargin;
+    private double topMargin,bottomMargin,leftMargin,rightMargin;
     private PrinterSelectorModel printerSelectorModel;
 
     @Override
@@ -44,9 +45,10 @@ public class PrinterSelectionController  implements Initializable{
     }
 
     private void setUpPrinterSelectorOptions(){
-        Printer[] availlablePrinters = (Printer[]) Printer.getAllPrinters().toArray();
-        int PRINTERS_COUNT = availlablePrinters.length;
+        
         ObservableList<String> printersNames  =  FXCollections.observableArrayList();
+        Printer[] availlablePrinters = getAvaillablePrinters();
+        int PRINTERS_COUNT =  availlablePrinters.length;
 
         for (int i=0 ; i < PRINTERS_COUNT ; i++){
             String printerName = availlablePrinters[i].getName();
@@ -80,13 +82,13 @@ public class PrinterSelectionController  implements Initializable{
                 fieldName = matcher.group().toString();
             }
             switch (fieldName){
-                case "TopMargin" : topMargin = Integer.parseInt(TopMargin.getText());
+                case "TopMargin" : topMargin = Double.parseDouble(TopMargin.getText());
                 break;
-                case "BottomMargin" : bottomMargin = Integer.parseInt(BottomMargin.getText());
+                case "BottomMargin" : bottomMargin = Double.parseDouble(BottomMargin.getText());
                 break;
-                case "LeftMargin" : leftMargin = Integer.parseInt(LeftMargin.getText());;
+                case "LeftMargin" : leftMargin = Double.parseDouble(LeftMargin.getText());;
                 break;
-                default : rightMargin = Integer.parseInt(RightMargin.getText());;
+                default : rightMargin = Double.parseDouble(RightMargin.getText());;
 
             } 
         }
@@ -118,6 +120,15 @@ public class PrinterSelectionController  implements Initializable{
         printerSelectorModel = pModel;
     }
 
+    private Printer[] getAvaillablePrinters(){
+        ObservableSet<Printer> printerSet = Printer.getAllPrinters();
 
+        int PRINTERS_COUNT = printerSet.size();
+
+        Printer[] availlablePrinters = new Printer[PRINTERS_COUNT] ;
+        printerSet.toArray(availlablePrinters);
+        
+       return availlablePrinters;
+    }
 
 }
