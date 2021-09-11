@@ -16,6 +16,7 @@ public class CheckPrinter {
     private Node node ;
     private StackPane pane ;
     private PageLayout pageLayout;
+    private Printer printer ;
 
     public CheckPrinter(Node node , StackPane pane){
         this.node = node ;
@@ -27,10 +28,13 @@ public class CheckPrinter {
         PrinterSelectorModel printerSelectorModel = new PrinterSelectorModel(pane , this);
         printerSelectorModel.show();
         }
+        //pageLayout = Printer.getDefaultPrinter().getDefaultPageLayout();
+        //print();
     }
 
-    public void setPageLayout(PageLayout pLayout){
+    public void setPageLayout(PageLayout pLayout , Printer printer){
         pageLayout = pLayout;
+        this.printer = printer ;
     }
 
     public void print(){
@@ -54,12 +58,13 @@ public class CheckPrinter {
     
         // preserve ratio (both values are the same)
         node.getTransforms().add(new Scale(scale, scale));
-        PrinterJob job =  PrinterJob.createPrinterJob();
+        PrinterJob job =  PrinterJob.createPrinterJob(printer);
+        
 
         if (job != null) {
-          //  Window winodw = node.getScene().getWindow();
+         //  Window winodw = node.getScene().getWindow();
          // job.showPrintDialog(winodw);
-          job.printPage(node);
+          job.printPage(pageLayout,node);
           job.endJob();
             
         }

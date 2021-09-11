@@ -1,10 +1,21 @@
 package idir.embag.Utility.Printer;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import javax.swing.GroupLayout.Alignment;
+
+import idir.embag.App;
+import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -26,25 +37,14 @@ public class CheckPrintModel extends Pane{
         setHeight(ccpCheckHeight);
     }
 
-    private Label createLabel(String value , double width ,TextAlignment alignment ,Font font, double posX , double posY){
-        Label label = new Label(value);
-        label.setMinWidth(width);
-        label.setTextAlignment(alignment);
-        label.setFont(font);
-        label.setLayoutX(posX);
-        label.setLayoutY(posY);
-        return label;
-    }
-
     private void setUpLabels(String amount , String amountStringF ,String amountStringS , String receiver , String location ){
         ObservableList<Node> children =  getChildren();
-        
-        children.add(createLabel(amount, 127, TextAlignment.LEFT, defaultFont, 500, 24));
-        children.add(createLabel(amountStringF, 390, TextAlignment.LEFT, defaultFont, 172, 53));
-        children.add(createLabel(amountStringS, 530, TextAlignment.LEFT, defaultFont, 31, 77));
-        children.add(createLabel(receiver, 480, TextAlignment.CENTER, defaultFont, 110, 106));
-        children.add(createLabel(location, 180, TextAlignment.RIGHT, smallFont, 315, 125));
-        children.add(createLabel(getDate(), 92, TextAlignment.RIGHT, smallFont, 516, 125));
+        children.add(createLabel(amount, 127, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, 503, 6));
+        children.add(createLabel(amountStringF, 390, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, 171, 38));
+        children.add(createLabel(amountStringS, 530, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, 28, 63));
+        children.add(createLabel(receiver, 480, TextAlignment.CENTER,Pos.CENTER_LEFT, defaultFont, 111, 90));
+        children.add(createLabel(location, 180, TextAlignment.RIGHT,Pos.CENTER_RIGHT, smallFont, 300, 110));
+        children.add(createLabel(getDate(), 92, TextAlignment.RIGHT,Pos.CENTER_LEFT, smallFont, 518, 110));
         children.add(createLineBar(4, 6, 0, 54, 23, 0));
         children.add(createLineBar(14, 21, -10, 60, 24, -10));
 
@@ -65,6 +65,41 @@ public class CheckPrintModel extends Pane{
         line.setLayoutX(Xset);
         line.setLayoutY(Yset);
         return line ;
+    }
+
+    private Label createLabel(String value , double width ,TextAlignment textAlignment ,Pos labelAlignment,Font font, double posX , double posY){
+        Label label = new Label(value);
+        label.setMinWidth(width);
+        label.setTextAlignment(textAlignment);
+        label.setFont(font);
+        label.setAlignment(labelAlignment);
+        label.setLayoutX(posX);
+        label.setLayoutY(posY);
+        return label;
+    }
+
+    private ImageView createImage(){
+        InputStream inputStream;
+        ImageView imageView =   null ;
+        
+            inputStream = App.class.getResourceAsStream("/images/check.png");
+            Image image = new Image(inputStream);
+
+            //Creating the image view
+             imageView = new ImageView();
+
+      //Setting image to the image view
+            imageView.setImage(image);
+
+      //Setting the image view parameters
+            imageView.setX(0);
+            imageView.setY(0);
+            imageView.setFitWidth(642.3);
+            imageView.setFitHeight(264.6);
+            //imageView.setPreserveRatio(true);
+        
+      
+      return imageView;
     }
 
 }

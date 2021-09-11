@@ -57,7 +57,8 @@ public class ChekFormController implements Initializable{
     @FXML
     private void Print(Event event) throws IOException{
         CheckPrintModel printModel = new CheckPrintModel(sAmount,sStringAmountF,sStringAmountS,sReceiver,sLocation); 
-        Scene scene = new Scene(printModel);
+        new Scene(printModel);
+        
         CheckPrinter checkPrinter = new CheckPrinter(printModel,App.stackPane);
         checkPrinter.printDialog();
 
