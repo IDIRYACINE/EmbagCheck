@@ -33,13 +33,12 @@ public class CheckPrintModel extends Pane{
     private void setUpBounds(){
         double ccpCheckWidth = 642.3;
         double ccpCheckHeight = 264.6;
-        setWidth(ccpCheckWidth);
-        setHeight(ccpCheckHeight);
+        setMinSize(ccpCheckWidth,ccpCheckHeight);
     }
 
     private void setUpLabels(String amount , String amountStringF ,String amountStringS , String receiver , String location ){
         ObservableList<Node> children =  getChildren();
-        children.add(createLabel(amount, 127, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, 503, 6));
+        children.add(createLabel(amount, 122, TextAlignment.LEFT,Pos.CENTER_RIGHT, defaultFont, 503, 6));
         children.add(createLabel(amountStringF, 390, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, 171, 38));
         children.add(createLabel(amountStringS, 530, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, 28, 63));
         children.add(createLabel(receiver, 480, TextAlignment.CENTER,Pos.CENTER_LEFT, defaultFont, 111, 90));
@@ -48,6 +47,17 @@ public class CheckPrintModel extends Pane{
         children.add(createLineBar(4, 6, 0, 54, 23, 0));
         children.add(createLineBar(14, 21, -10, 60, 24, -10));
 
+    }
+
+    private Label createLabel(String value , double width ,TextAlignment textAlignment ,Pos labelAlignment,Font font, double posX , double posY){
+        Label label = new Label(value);
+        label.setMinWidth(width);
+        label.setTextAlignment(textAlignment);
+        label.setFont(font);
+        label.setAlignment(labelAlignment);
+        label.setLayoutX(posX);
+        label.setLayoutY(posY);
+        return label;
     }
 
     private String getDate(){
@@ -67,16 +77,6 @@ public class CheckPrintModel extends Pane{
         return line ;
     }
 
-    private Label createLabel(String value , double width ,TextAlignment textAlignment ,Pos labelAlignment,Font font, double posX , double posY){
-        Label label = new Label(value);
-        label.setMinWidth(width);
-        label.setTextAlignment(textAlignment);
-        label.setFont(font);
-        label.setAlignment(labelAlignment);
-        label.setLayoutX(posX);
-        label.setLayoutY(posY);
-        return label;
-    }
 
     private ImageView createImage(){
         InputStream inputStream;
