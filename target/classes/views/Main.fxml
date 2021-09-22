@@ -11,7 +11,7 @@
 
 <Pane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.Models.MainController">
    <children>
-      <VBox fx:id="leftPanel" alignment="CENTER" prefHeight="720.0" prefWidth="220.0" spacing="20.0" >
+      <VBox fx:id="leftPanel" alignment="CENTER" prefHeight="720.0" prefWidth="220.0" spacing="20.0">
       <children>
             <HBox fx:id="dataBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="190.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#dataClicked" prefHeight="50.0" spacing="15.0" styleClass="sidebar-options">
                <children>
@@ -26,10 +26,20 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox fx:id="checkBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="190.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#checkCLicked" prefHeight="50.0" spacing="15.0" styleClass="sidebar-options">
+            <HBox fx:id="checkBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="190.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#checkClicked" prefHeight="50.0" spacing="15.0" styleClass="sidebar-options">
                <children>
                   <FontAwesomeIconView fx:id="checkIcon" scaleX="3.0" scaleY="3.0" />
                   <Label fx:id="checkLabel" text="Check">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="exportBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="190.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#exportClicked" prefHeight="50.0" spacing="15.0" styleClass="sidebar-options">
+               <children>
+                  <FontAwesomeIconView fx:id="exportIcon" glyphName="ANCHOR" scaleX="3.0" scaleY="3.0" />
+                  <Label fx:id="exportLabel" text="Export">
                      <font>
                         <Font size="35.0" />
                      </font>

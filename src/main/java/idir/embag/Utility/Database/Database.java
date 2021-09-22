@@ -94,6 +94,7 @@ public class Database implements DatabaseInterface{
     }
 
     @Override
+
     public ArrayList<CheckModel> RequestData() throws SQLException{
         String SELECT_CHECK_QUERY = "SELECT * FROM  " + TABLE_NAME ;
         
@@ -113,6 +114,18 @@ public class Database implements DatabaseInterface{
             CheckStatus STATUS = CheckStatus.valueOf(rSet.getString("status"));
     
         return new CheckModel(RECEIVER, TDATE, AMOUNT, ID, STATUS, LOCATION);
+    }
+
+    private String[][] QueryToExcelData(ResultSet rSet) throws SQLException{
+        String[][] result = new String[6][1];
+        String[] stringSets = {"receiver" , "date" , "location" ,"status" };
+        for (int i = 0 ; i < stringSets.length ; i++){
+            result[i][0] = rSet.getString(stringSets[i]);
+        }
+        result[4][0] = String.valueOf(rSet.getInt("id"));
+        result[5][0] = String.valueOf(rSet.getDouble("amount"));
+        
+        return result;
     }
 
     @Override

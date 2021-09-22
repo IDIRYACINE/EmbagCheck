@@ -11,6 +11,7 @@ module idir.embag {
     requires org.apache.poi.poi;
     requires org.apache.poi.ooxml ;
     requires javafx.swing;
+    requires org.apache.commons.compress;
     opens idir.embag to javafx.fxml;
     opens idir.embag.Models.CheckCreator to javafx.base,javafx.fxml;
     opens idir.embag.Models.CheckListDisplay to javafx.base,javafx.fxml;
@@ -19,6 +20,7 @@ module idir.embag {
     opens idir.embag.Models to javafx.base,javafx.fxml;
     opens idir.embag.Models.CheckDataModel to javafx.base,javafx.fxml;
     opens idir.embag.Utility.Printer.PrinterSelection to javafx.base , javafx.fxml;
+    opens idir.embag.Models.CheckExporter to javafx.base,javafx.fxml;
 
     exports idir.embag;
 }

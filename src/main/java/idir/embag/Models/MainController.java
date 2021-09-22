@@ -26,17 +26,17 @@ public class MainController implements Initializable{
     @FXML
     private VBox leftPanel ;
     @FXML
-    private FontAwesomeIconView checkIcon , dataIcon ;
+    private FontAwesomeIconView checkIcon , dataIcon,exportIcon ;
     @FXML 
-    private Label dataLabel , checkLabel ;
+    private Label dataLabel , checkLabel ,exportLabel;
     @FXML
-    private HBox dataBox , checkBox ;
+    private HBox dataBox , checkBox,exportBox ;
 
     private Label activeLabel ;
     private FontAwesomeIconView activeIcon ;
     private HBox activeBox;
 
-    private VBox dataPanel , checkPanel ;
+    private VBox dataPanel , checkPanel , exportPanel ;
 
 
 
@@ -59,14 +59,20 @@ public class MainController implements Initializable{
     }
     
     @FXML
-    private void checkCLicked(Event event) throws IOException{
+    private void checkClicked(Event event) throws IOException{
       setNode(checkPanel);
       setActiveStyle(checkBox,checkLabel, checkIcon);
+    }
+    @FXML
+    private void exportClicked(Event event) throws IOException{
+      setNode(exportPanel);
+      setActiveStyle(exportBox,exportLabel, exportIcon);
     }
 
     private void loadPanels() throws IOException{
       loadDataPanel();
-      checkPanel =  FXMLLoader.load(getClass().getResource("/views/CheckCreationPanel.fxml"));      
+      checkPanel =  FXMLLoader.load(getClass().getResource("/views/CheckCreationPanel.fxml"));    
+      exportPanel =   FXMLLoader.load(getClass().getResource("/views/ExportPanel.fxml"));  
     }
     
     private void loadDataPanel() throws IOException {

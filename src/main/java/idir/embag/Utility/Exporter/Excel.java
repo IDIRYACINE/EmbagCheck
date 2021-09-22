@@ -2,6 +2,10 @@ package idir.embag.Utility.Exporter;
 
 import org.apache.poi.ss.usermodel.Sheet;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -13,7 +17,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import idir.embag.App;
 import idir.embag.Models.CheckDataModel.CheckModel;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 public class Excel {
     private Workbook workbook ;
@@ -24,6 +31,10 @@ public class Excel {
         Row  header = sheet.createRow(0);
         CellStyle headerStyle = setUpHeaderStyle();
         setUpHeaderCells(header, headerStyle);
+    }
+
+    private void reset(){
+        
     }
 
     private void setUpWorkSheet(String title){
@@ -57,15 +68,48 @@ public class Excel {
         return headerStyle ;
     }
 
-    private void setUpCellsData(ArrayList<CheckModel> checks){
+    public void setUpCellsData(ArrayList<CheckModel> checks){
         CellStyle style = workbook.createCellStyle();
         style.setWrapText(true);
+        String[] rawData ;
+
         for(int i = 0 ; i < checks.size() ; i++){
-            Row row = sheet.createRow(2);
-            Cell cell = row.createCell(0);
-            cell.setCellValue("John Smith");
-            cell.setCellStyle(style);
+            Row row = sheet.createRow(i+1);
+            rawData = checkModelToRawData(checks.get(i));
+            for (int j = 0 ; j < rawData.length ; j++){
+            // {"Date","Numero Check" , "Receveur" ,"Location" , "Montant" ,"Status" }
+                Cell cell = row.createCell(j);
+                cell.setCellValue(rawData[j]);
+                cell.setCellStyle(style);
         }
+    }
+    }
+
+    private String[] checkModelToRawData(CheckModel check){
+        String result[] = new String[6];
+        result[0] = check.getDate();
+        result[1] = String.valueOf(check.getID());
+        result[2] = check.getReceiver();
+        result[3] = check.getLocation();
+        result[4] = String.valueOf(check.getAmount());
+        result[5] = check.getStatus();
+        return result;
+    }
+
+    public void saveSheet(Window window  ){
+        FileChooser fileChooser = new FileChooser();
+        File file = fileChooser.showSaveDialog(window);
+ 
+            if (file != null) {
+                try {
+                    
+                    FileOutputStream content = new FileOutputStream(file);
+                    workbook.write(content);
+                    content.close();
+                } 
+                catch (IOException ex) {
+                }
+            }
     }
 
 
