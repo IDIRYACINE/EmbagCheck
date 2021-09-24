@@ -1,10 +1,12 @@
 package idir.embag.Models.CheckSearch;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import com.jfoenix.controls.JFXDialog;
 
 import idir.embag.Models.CheckDataModel.CheckModel;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableView;
@@ -28,11 +30,11 @@ public class SearchModel {
         dialog.show();
     }
 
-    public void setTable(TableView<CheckModel> dataTable, ObservableList<CheckModel> checks) {
-        controller.setUpTable(dataTable , checks);
+
+    public void listenToSearchResult(ListChangeListener<ArrayList<CheckModel>> listener){
+        controller.subscribeToSearchResult(listener);
     }
-
-   
-
+     
+    
     
 }

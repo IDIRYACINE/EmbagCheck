@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXDialog;
 
 import idir.embag.App;
 import idir.embag.Models.CheckDataModel.CheckModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
@@ -20,22 +22,24 @@ public class SearchController {
                       LocationField , DateStartField , DateEndField ;
 
     private JFXDialog dialogStage ;
-    private TableView<CheckModel> dataTable ; 
-    private ObservableList<CheckModel> searchResult ;
     private Boolean queryNotEmpty = false ;
+    private ObservableList<ArrayList<CheckModel>> searchResult = FXCollections.observableArrayList();;
+
 
     @FXML
     private void CancelSearch(){
-        
         dialogStage.close();
     }
+
     @FXML
     private void ConfirmSearch(){
         String rawData = QueryMetaData();
         if (queryNotEmpty){
-        ArrayList<CheckModel> result = App.dHelper.Search(rawData);
-        showSearchResult(result);}
+            searchResult.add(App.dHelper.Search(rawData));
+        queryNotEmpty = false;
+    }
         dialogStage.close();
+       
     }
 
     public void setDialogStage(JFXDialog dialog){
@@ -75,19 +79,17 @@ public class SearchController {
         return result;
     } 
 
-    public  void showSearchResult( ArrayList<CheckModel> models){
-        searchResult.clear();
-        for (CheckModel checkModel : models) {
-            searchResult.add(checkModel);
+    public ArrayList<CheckModel> search(){
+        String rawData = QueryMetaData();
+        if (queryNotEmpty){
+        return  App.dHelper.Search(rawData);
         }
-        dataTable.refresh();
+        return null;
     }
 
-    public void setUpTable(TableView<CheckModel> dataTable, ObservableList<CheckModel> checks) {
-        this.dataTable = dataTable ;
-        searchResult = checks ;
+    public void subscribeToSearchResult(ListChangeListener<ArrayList<CheckModel>> listener){
+        searchResult.addListener(listener);
     }
-
 
 
 

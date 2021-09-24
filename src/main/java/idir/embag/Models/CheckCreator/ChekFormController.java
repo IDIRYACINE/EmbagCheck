@@ -110,8 +110,8 @@ public class ChekFormController implements Initializable{
         Receiver.setText(value);
     }
     private void updateAmount (String value){
-        if (!value.matches("\\d*")) {
-            value = value.replaceAll("[^\\d]", "");
+        if (!value.matches("[0-9,]*")) {
+            value = value.replaceAll("[^0-9,]", "");
         }
 
         value = CheckFormater.spaceFormater(value);
@@ -124,18 +124,13 @@ public class ChekFormController implements Initializable{
         stringAmountS.setText(sStringAmountS);
     }
     private void updateID(String value){
-        if (!value.matches("\\d*")) {
-            value = value.replaceAll("[^\\d]", "");
-        }
         ID.setText(value);
     }
-    private void updateLocation(String value){
-        if (!value.matches("\\sa-zA-Z*")) {
-            value = value.replaceAll("[^\\sa-zA-Z]", "");
-        }
-        
+    private void updateLocation(String value){    
         sLocation = value;
         Location.setText(value);
     }
+
+     
     
 }

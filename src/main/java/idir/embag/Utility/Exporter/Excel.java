@@ -97,7 +97,11 @@ public class Excel {
     }
 
     public void saveSheet(Window window  ){
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Excel files (*.xlsx)", "*.xslx");
         FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        
         File file = fileChooser.showSaveDialog(window);
  
             if (file != null) {

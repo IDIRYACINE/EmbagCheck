@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import idir.embag.App;
+import idir.embag.Models.CheckExporter.ExportController;
 import idir.embag.Models.CheckListDisplay.ChecksController;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -72,9 +73,17 @@ public class MainController implements Initializable{
     private void loadPanels() throws IOException{
       loadDataPanel();
       checkPanel =  FXMLLoader.load(getClass().getResource("/views/CheckCreationPanel.fxml"));    
-      exportPanel =   FXMLLoader.load(getClass().getResource("/views/ExportPanel.fxml"));  
+      loadExportPanel();
     }
-    
+
+    private void loadExportPanel()throws IOException{
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ExportPanel.fxml"));     
+      loader.load();
+      exportPanel = loader.getRoot();
+      ExportController exportController = loader.getController();
+      exportController.setUpDialogs(rightPanel);
+    }
+
     private void loadDataPanel() throws IOException {
       FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/CheckListDisplay.fxml"));    
       loader.load();

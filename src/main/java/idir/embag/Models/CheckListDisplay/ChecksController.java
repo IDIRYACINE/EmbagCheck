@@ -11,6 +11,7 @@ import idir.embag.Models.CheckDataModel.*;
 import idir.embag.Models.CheckObserver.CheckObserverModel;
 import idir.embag.Models.CheckSearch.SearchModel;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -37,6 +38,18 @@ public class ChecksController implements Initializable{
     private SearchModel searchModel;
     private CheckObserverModel observerModel ;
 
+    private ListChangeListener<ArrayList<CheckModel>> searchListener = new ListChangeListener<ArrayList<CheckModel>>(){
+
+        @Override
+        public void onChanged(Change<? extends ArrayList<CheckModel>> result) {
+            while(result.next()){
+                if (result.wasAdded()){
+                showSearchResult(result.getAddedSubList().get(0));
+            }
+            }
+        }
+        
+    };
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -49,8 +62,6 @@ public class ChecksController implements Initializable{
     @FXML
     private void newSearchDialog(Event e){
         searchModel.show();
-        searchModel.setTable(DataTable , checks);
-
 
     }
 
@@ -90,6 +101,7 @@ public class ChecksController implements Initializable{
     public void setUpDialogs(StackPane rightPanel){
         try {
             searchModel = new SearchModel(rightPanel);
+            searchModel.listenToSearchResult(searchListener);
             observerModel = new CheckObserverModel(rightPanel,DataTable);
 
         } catch (IOException e) {
@@ -101,6 +113,15 @@ public class ChecksController implements Initializable{
     private static ObservableList<CheckModel> checks = FXCollections.observableArrayList(
         
     );
+
+    private void showSearchResult(ArrayList<CheckModel>result){
+        checks.clear();
+        for (CheckModel checkModel : result) {
+            checks.add(checkModel);
+        }
+        DataTable.refresh();
+    }
+
 
     
 }
