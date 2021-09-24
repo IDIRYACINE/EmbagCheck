@@ -78,7 +78,7 @@ public class CheckFormater {
     }
 
     private static void splitMainAndSecondaryCurrency(String value) {
-        String[] stringNums = value.split(",");
+        String[] stringNums = value.split("\\.");
         principleNums = numbersFilter(stringNums,0);
         secondaryNums = numbersFilter(stringNums,1);
     }

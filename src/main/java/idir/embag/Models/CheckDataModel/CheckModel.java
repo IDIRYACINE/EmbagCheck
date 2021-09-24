@@ -6,11 +6,11 @@ public class CheckModel{
     private String receiver ;
     private String date ;
     private BigDecimal amount ;
-    private Integer ID ;
+    private String ID ;
     private CheckStatus status ;
     private String location ;
 
-    public CheckModel(String receiver, String date, BigDecimal amount, Integer iD, CheckStatus status , String location) {
+    public CheckModel(String receiver, String date, BigDecimal amount, String iD, CheckStatus status , String location) {
         this.setReceiver(receiver);
         this.date = date;
         this.setAmount(amount);
@@ -35,11 +35,11 @@ public class CheckModel{
         this.amount = amount;
     }
 
-    public int getID() {
+    public String getID() {
         return ID;
     }
 
-    public void setID(int iD) {
+    public void setID(String iD) {
         this.ID = iD;
     }
 

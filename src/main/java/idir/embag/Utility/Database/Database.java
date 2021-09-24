@@ -45,7 +45,7 @@ public class Database implements DatabaseInterface{
 
     private void CreateTables() throws SQLException{
         String CREATE_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS Checks (\n"
-        + "	id integer PRIMARY KEY,\n"
+        + "	id String PRIMARY KEY,\n"
         + "	receiver text NOT NULL,\n"
         + "	date text NOT NULL,\n"
         + "	location text NOT NULL,\n"
@@ -74,7 +74,7 @@ public class Database implements DatabaseInterface{
 
         PreparedStatement qStatement = conn.prepareStatement(UPDATE_STATUS_QUERY) ;
         qStatement.setString(1, checkModel.getStatus());
-        qStatement.setInt(2, checkModel.getID());
+        qStatement.setString(2, checkModel.getID());
         qStatement.executeUpdate();
     }
 
@@ -84,7 +84,7 @@ public class Database implements DatabaseInterface{
 
         PreparedStatement qStatement = conn.prepareStatement(INSERT_CHECK_QUERY) ;
         qStatement.setString(1,checkModel.getDate());
-        qStatement.setInt(2,checkModel.getID());
+        qStatement.setString(2,checkModel.getID());
         qStatement.setString(3,checkModel.getReceiver());
         qStatement.setDouble(4,checkModel.getAmount());
         qStatement.setString(5,checkModel.getStatus());
@@ -106,7 +106,7 @@ public class Database implements DatabaseInterface{
     }    
 
     private CheckModel QueryToCheckModel(ResultSet rSet) throws SQLException{
-            Integer ID = rSet.getInt("id");
+        String ID = rSet.getString("id");
             BigDecimal AMOUNT = BigDecimal.valueOf(rSet.getDouble("amount"));
             String RECEIVER = rSet.getString("receiver");
             String TDATE = rSet.getString("date");

@@ -1,33 +1,20 @@
 package idir.embag.Models.CheckCreator;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import idir.embag.App;
-import idir.embag.Models.CheckDataModel.CheckModel;
-import idir.embag.Models.CheckDataModel.CheckStatus;
-import idir.embag.Models.CheckListDisplay.ChecksController;
 import idir.embag.Utility.NumToStringFormater.CheckFormater;
-import idir.embag.Utility.Printer.CheckPrintModel;
-import idir.embag.Utility.Printer.CheckPrinter;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.StackPane;
-
-import java.time.format.DateTimeFormatter;  
-import java.time.LocalDateTime;    
 
 public class ChekFormController implements Initializable{
 
@@ -38,46 +25,31 @@ public class ChekFormController implements Initializable{
     private Label LDate,Receiver,Amount,stringAmountF,stringAmountS,ID,Location;
     @FXML
     private TextField ReceiverField, IDField,LocationField,AmountField;
-   
-
-    private String sReceiver , sAmount , sStringAmountF,sStringAmountS,sLocation,sDate;
     private Label currentLabel;
+    private CheckCreatorModel checkCreatorModel;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+       checkCreatorModel = new CheckCreatorModel();
        ReceiverField.textProperty().addListener(changeListener);
        AmountField.textProperty().addListener(changeListener);
        IDField.textProperty().addListener(changeListener);
        LocationField.textProperty().addListener(changeListener);
-       sDate = getTime();
-       LDate.setText(sDate);
+       LDate.setText(checkCreatorModel.getDate());
        currentLabel = stringAmountF;
     }
 
     @FXML
     private void Print(Event event) throws IOException{
-        CheckPrintModel printModel = new CheckPrintModel(sAmount,sStringAmountF,sStringAmountS,sReceiver,sLocation); 
-        new Scene(printModel);
-        
-        CheckPrinter checkPrinter = new CheckPrinter(printModel,App.stackPane);
-        checkPrinter.printDialog();
+        checkCreatorModel.Print();
 
     }
     @FXML 
     private void CreateCheck(){
-        BigDecimal amount =BigDecimal.valueOf(Double.parseDouble(sAmount.replace(" ", "")));
-        Integer id = Integer.parseInt(ID.getText());
-        CheckModel checkModel  = new CheckModel(sReceiver, sDate, amount, id, CheckStatus.Attendu, sLocation);
-        ChecksController.addCheck(checkModel);
+        checkCreatorModel.CreateCheck();
+        
     }
            
-    private String getTime(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");  
-        LocalDateTime now = LocalDateTime.now();  
-        return dtf.format(now) ;
-    }
-
- 
 
     private ChangeListener<String> changeListener = new ChangeListener<String>(){
         Pattern pattern = Pattern.compile("(?<=id=).+?(?=,)");
@@ -102,32 +74,25 @@ public class ChekFormController implements Initializable{
     };
 
     private void updateReceiver(String value){
-        if (!value.matches("\\sa-zA-Z*")) {
-            value = value.replaceAll("[^\\sa-zA-Z]", "");
-        }
-
-        sReceiver = value;
+        checkCreatorModel.setReceiver(value);
         Receiver.setText(value);
     }
-    private void updateAmount (String value){
-        if (!value.matches("[0-9,]*")) {
-            value = value.replaceAll("[^0-9,]", "");
-        }
 
-        value = CheckFormater.spaceFormater(value);
-        sAmount = value;
+    private void updateAmount (String value){
+        value = checkCreatorModel.filterAmount(value);
+        checkCreatorModel.setNumAmount(value);
         Amount.setText(value);
         String[] formatedAmountString = CheckFormater.numToStringFormat(value , currentLabel ) ;
-        sStringAmountF = formatedAmountString[0];
-        stringAmountF.setText(sStringAmountF);
-        sStringAmountS = formatedAmountString[1];
-        stringAmountS.setText(sStringAmountS);
+        checkCreatorModel.setFirstStrAmount(formatedAmountString[0]); 
+        stringAmountF.setText(formatedAmountString[0]);
+        checkCreatorModel.setSecondStrAmount(formatedAmountString[1]);
+        stringAmountS.setText(formatedAmountString[1]);
     }
     private void updateID(String value){
         ID.setText(value);
     }
     private void updateLocation(String value){    
-        sLocation = value;
+        checkCreatorModel.setLocation(value);;
         Location.setText(value);
     }
 
