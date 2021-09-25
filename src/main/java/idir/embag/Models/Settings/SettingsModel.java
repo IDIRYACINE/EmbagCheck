@@ -21,9 +21,9 @@ public class SettingsModel {
     
 
     private SettingsModel(){
-        loadIniFile();
         xCoordinates = new String[7];
         yCoordinates = new String[7];
+        loadIniFile();
         
     }
 
@@ -78,6 +78,7 @@ public class SettingsModel {
     public void updateScaleCoordinates(String x , String y){
         xCoordinates[6] = x ;
         yCoordinates[6] = y;
+
     }
 
     public void reset(){
@@ -87,18 +88,13 @@ public class SettingsModel {
     public void saveSettings(){
         try {
         
-            for (int j = 0 ; j < COORDINATES_PROPERITY.length ; j++){
+            for (int j = 0 ; j < COORDINATES_PROPERITY.length -1 ; j++){
                 ini.put(COORDINATES_BLOC[0], COORDINATES_PROPERITY[j]+"X" ,xCoordinates[j]);
                 ini.put(COORDINATES_BLOC[0], COORDINATES_PROPERITY[j]+"Y" ,yCoordinates[j]);
-                xCoordinates[j] = defaultX[j];
-                yCoordinates[j] = defaultY[j];
             }
-
             ini.put(COORDINATES_BLOC[1], COORDINATES_PROPERITY[6]+"X" ,xCoordinates[6]);
             ini.put(COORDINATES_BLOC[1], COORDINATES_PROPERITY[6]+"Y" ,yCoordinates[6]);
-            xCoordinates[6] = defaultX[6];
-            yCoordinates[6] = defaultY[6];
-        
+            
         ini.store();
         }
         catch(IOException exception){
@@ -125,14 +121,18 @@ public class SettingsModel {
 
     private void createDefaultIniFile() throws IOException{
         //children.add(createLineBar(14, 21, -10, 60, 24, -10));*/
-        for (int i = 0 ; i < COORDINATES_BLOC.length ; i++){
-            for (int j=0 ; j < COORDINATES_PROPERITY.length ; j++){
-                ini.put(COORDINATES_BLOC[i], COORDINATES_PROPERITY[j]+"X" ,defaultX[j]);
-                ini.put(COORDINATES_BLOC[i], COORDINATES_PROPERITY[j]+"Y" ,defaultY[j]);
-                xCoordinates[i] = defaultX[i];
-                yCoordinates[i] = defaultY[i];
+       
+            for (int j=0 ; j < COORDINATES_PROPERITY.length - 1 ; j++){
+                ini.put(COORDINATES_BLOC[0], COORDINATES_PROPERITY[j]+"X" ,defaultX[j]);
+                ini.put(COORDINATES_BLOC[0], COORDINATES_PROPERITY[j]+"Y" ,defaultY[j]);
+                xCoordinates[j] = defaultX[j];
+                yCoordinates[j] = defaultY[j];
             }
-        }
+            xCoordinates[6] = defaultX[6];
+            yCoordinates[6] = defaultY[6];            
+        ini.put(COORDINATES_BLOC[1], COORDINATES_PROPERITY[6]+"X" ,xCoordinates[6]);
+        ini.put(COORDINATES_BLOC[1], COORDINATES_PROPERITY[6]+"Y" ,yCoordinates[6]);
+        
         ini.store();
         
     }

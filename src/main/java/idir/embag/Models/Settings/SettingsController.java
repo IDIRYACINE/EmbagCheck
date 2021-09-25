@@ -32,7 +32,7 @@ public class SettingsController implements Initializable{
         settingsModel.updatefirstStrAmountCoordinates(firstStrAmountX.getText(), firstStrAmountY.getText());
         settingsModel.updateReceiverCoordinates(receiverX.getText(), receiverY.getText());
         settingsModel.updatesecondStrAmountCoordinates(secondStrAmountX.getText(), secondStrAmountY.getText());
-
+        settingsModel.updateScaleCoordinates(scaleX.getText(), scaleY.getText());
         settingsModel.saveSettings();
     }
 
@@ -46,6 +46,7 @@ public class SettingsController implements Initializable{
         for (int i = 0 ; i < xCoordinates.length;i++){
             xFields[i].setText(xCoordinates[i]);
             yFields[i].setText(yCoordinates[i]);
+            
         }
 
     }
