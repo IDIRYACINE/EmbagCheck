@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import idir.embag.App;
 import idir.embag.Models.CheckDataModel.CheckModel;
-import idir.embag.Models.CheckSearch.SearchModel;
+import idir.embag.Models.CheckSearch.SearchView;
 import idir.embag.Utility.Exporter.Excel;
 import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
@@ -21,7 +21,7 @@ import javafx.stage.Window;
 public class ExportController implements Initializable{
 
     private Excel excelManager;
-    private SearchModel searchModel;
+    private SearchView searchModel;
 
     @FXML
     Button exports ;
@@ -44,7 +44,7 @@ public class ExportController implements Initializable{
 
     public void setUpDialogs(StackPane rightPanel){
         try {
-            searchModel = new SearchModel(rightPanel);
+            searchModel = new SearchView(rightPanel);
             searchModel.listenToSearchResult(searchListener);
 
         } catch (IOException e) {

@@ -38,8 +38,18 @@
             </HBox>
             <HBox fx:id="exportBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="190.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#exportClicked" prefHeight="50.0" spacing="15.0" styleClass="sidebar-options">
                <children>
-                  <FontAwesomeIconView fx:id="exportIcon" glyphName="ANCHOR" scaleX="3.0" scaleY="3.0" />
+                  <FontAwesomeIconView fx:id="exportIcon" glyphName="CAR" scaleX="3.0" scaleY="3.0" />
                   <Label fx:id="exportLabel" text="Export">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox fx:id="settingsBox" alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="190.0" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#settingsClicked" prefHeight="50.0" spacing="15.0" styleClass="sidebar-options">
+               <children>
+                  <FontAwesomeIconView fx:id="settingsIcon" glyphName="COG" scaleX="3.0" scaleY="3.0" />
+                  <Label fx:id="settingsLabel" text="Settings">
                      <font>
                         <Font size="35.0" />
                      </font>

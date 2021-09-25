@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 import idir.embag.App;
 import idir.embag.Models.CheckDataModel.*;
 import idir.embag.Models.CheckObserver.CheckObserverModel;
-import idir.embag.Models.CheckSearch.SearchModel;
+import idir.embag.Models.CheckSearch.SearchView;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -35,7 +35,7 @@ public class ChecksController implements Initializable{
     private TableColumn<CheckModel,CheckStatus> Status ;
 
 
-    private SearchModel searchModel;
+    private SearchView searchModel;
     private CheckObserverModel observerModel ;
 
     private ListChangeListener<ArrayList<CheckModel>> searchListener = new ListChangeListener<ArrayList<CheckModel>>(){
@@ -100,7 +100,7 @@ public class ChecksController implements Initializable{
 
     public void setUpDialogs(StackPane rightPanel){
         try {
-            searchModel = new SearchModel(rightPanel);
+            searchModel = new SearchView(rightPanel);
             searchModel.listenToSearchResult(searchListener);
             observerModel = new CheckObserverModel(rightPanel,DataTable);
 

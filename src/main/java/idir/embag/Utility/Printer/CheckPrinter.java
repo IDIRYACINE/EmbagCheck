@@ -2,6 +2,7 @@ package idir.embag.Utility.Printer;
 
 
 
+import idir.embag.Models.Settings.SettingsModel;
 import idir.embag.Utility.Printer.PrinterSelection.PrinterSelectorModel;
 import javafx.print.PageLayout;
 import javafx.print.Printer;
@@ -16,6 +17,8 @@ public class CheckPrinter {
     private StackPane pane ;
     private PageLayout pageLayout;
     private Printer printer ;
+    private static SettingsModel settingsModel = SettingsModel.getInstance();
+
 
     public CheckPrinter(Node node , StackPane pane){
         this.node = node ;
@@ -36,7 +39,8 @@ public class CheckPrinter {
     }
 
     public void print(double xScale , double yScale){
-        node.getTransforms().add(new Scale(xScale, yScale));
+         double[] scales = loadScaleFromSettings();
+        node.getTransforms().add(new Scale(scales[0], scales[1]));
         PrinterJob job =  PrinterJob.createPrinterJob(printer);
         
         if (job != null) {
@@ -45,8 +49,14 @@ public class CheckPrinter {
           job.endJob();
             
         }
+    }
 
-      }
+    private double[] loadScaleFromSettings(){
+        double[] scales = new double[2];
+        scales[0] = Double.parseDouble(settingsModel.getXcoordinates()[5]);
+        scales[1] = Double.parseDouble( settingsModel.getYcoordinates()[5]);
+        return scales;
+    }
     
 
 

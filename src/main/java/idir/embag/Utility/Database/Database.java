@@ -27,6 +27,7 @@ public class Database implements DatabaseInterface{
     public void Connect() {
         String AbsolutePath = new File("").getAbsolutePath();
         File directory = new File(DATABASE_PATH);
+        
         if (! directory.exists()){
             directory.mkdir();
         }
@@ -116,17 +117,6 @@ public class Database implements DatabaseInterface{
         return new CheckModel(RECEIVER, TDATE, AMOUNT, ID, STATUS, LOCATION);
     }
 
-    private String[][] QueryToExcelData(ResultSet rSet) throws SQLException{
-        String[][] result = new String[6][1];
-        String[] stringSets = {"receiver" , "date" , "location" ,"status" };
-        for (int i = 0 ; i < stringSets.length ; i++){
-            result[i][0] = rSet.getString(stringSets[i]);
-        }
-        result[4][0] = String.valueOf(rSet.getInt("id"));
-        result[5][0] = String.valueOf(rSet.getDouble("amount"));
-        
-        return result;
-    }
 
     @Override
     public ArrayList<CheckModel> Search(String rawQueryString) throws SQLException {

@@ -9,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import javax.swing.GroupLayout.Alignment;
 
 import idir.embag.App;
+import idir.embag.Models.Settings.SettingsModel;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -24,6 +25,7 @@ import javafx.scene.text.TextAlignment;
 public class CheckPrintModel extends Pane{
     private static Font defaultFont =  new Font("Serif Bold", 13f);
     private static Font smallFont = new Font("Serif Bold",12f);
+    private static SettingsModel settingsModel = SettingsModel.getInstance();
 
     public CheckPrintModel(String amount , String amountStringF ,String amountStringS , String receiver , String location ){
        setUpBounds();
@@ -38,15 +40,31 @@ public class CheckPrintModel extends Pane{
 
     private void setUpLabels(String amount , String amountStringF ,String amountStringS , String receiver , String location ){
         ObservableList<Node> children =  getChildren();
-        children.add(createLabel(amount, 122, TextAlignment.LEFT,Pos.CENTER_RIGHT, defaultFont, 503, 6));
-        children.add(createLabel(amountStringF, 390, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, 171, 38));
-        children.add(createLabel(amountStringS, 530, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, 28, 63));
-        children.add(createLabel(receiver, 480, TextAlignment.CENTER,Pos.CENTER_LEFT, defaultFont, 111, 90));
-        children.add(createLabel(location, 180, TextAlignment.RIGHT,Pos.CENTER_RIGHT, smallFont, 300, 110));
-        children.add(createLabel(getDate(), 92, TextAlignment.RIGHT,Pos.CENTER_LEFT, smallFont, 518, 110));
+        int[] xCoordinates = new int[6];
+        int[] yCoordinates = new int[6];
+
+        loadCoordinates(xCoordinates, yCoordinates);
+
+        children.add(createLabel(amount, 122, TextAlignment.LEFT,Pos.CENTER_RIGHT, defaultFont, xCoordinates[0], yCoordinates[0]));
+        children.add(createLabel(amountStringF, 390, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, xCoordinates[1], yCoordinates[1]));
+        children.add(createLabel(amountStringS, 530, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont,  xCoordinates[2], yCoordinates[2]));
+        children.add(createLabel(receiver, 480, TextAlignment.CENTER,Pos.CENTER_LEFT, defaultFont,  xCoordinates[3], yCoordinates[3]));
+        children.add(createLabel(location, 180, TextAlignment.RIGHT,Pos.CENTER_RIGHT, smallFont,  xCoordinates[4], yCoordinates[4]));
+        children.add(createLabel(getDate(), 92, TextAlignment.RIGHT,Pos.CENTER_LEFT, smallFont,  xCoordinates[5], yCoordinates[5]));
         children.add(createLineBar(4, 6, 0, 54, 23, 0));
         children.add(createLineBar(14, 21, -10, 60, 24, -10));
 
+    }
+
+    private void loadCoordinates(int[] xCoordinates , int[] yCoordinates){
+        String [] STR_X_COORDINATES = settingsModel.getXcoordinates();
+        String [] STR_Y_COORDINATES = settingsModel.getYcoordinates();
+
+        for (int i = 0 ; i < STR_X_COORDINATES.length;i++){
+            xCoordinates[i] = Integer.parseInt(STR_X_COORDINATES[i]);
+            yCoordinates[i] = Integer.parseInt(STR_Y_COORDINATES[i]);;
+        }
+       
     }
 
     private Label createLabel(String value , double width ,TextAlignment textAlignment ,Pos labelAlignment,Font font, double posX , double posY){
