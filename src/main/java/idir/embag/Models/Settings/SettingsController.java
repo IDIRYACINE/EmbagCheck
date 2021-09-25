@@ -36,8 +36,13 @@ public class SettingsController implements Initializable{
         settingsModel.saveSettings();
     }
 
+    @FXML
+    private void resetSettings(){
+        
+        settingsModel.resetSettings();
+    }
+
    private void loadInitialSettings(){
-        //amount,firstStrAmount ,secondStrAmount,receiver,location,date,scale
 
         String[] xCoordinates = settingsModel.getXcoordinates();
         String[] yCoordinates = settingsModel.getYcoordinates();

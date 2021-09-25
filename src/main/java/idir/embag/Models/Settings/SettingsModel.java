@@ -7,14 +7,13 @@ import org.ini4j.*;
 
 public class SettingsModel {
     private Wini ini ;
-    //amount,firstStrAmount ,secondStrAmount,receiver,location,date,scale
     private String[] xCoordinates;
     private String[] yCoordinates;
 
-    private static String[] defaultX = {"503","171","28","111","300","518","0.75"};
-    private static String[] defaultY = {"6","38","63","90","110","110","0.75"}; 
-    private static String[] COORDINATES_BLOC = {"Print coordinations","Print scales"} ;
-    private static String[] COORDINATES_PROPERITY = {"amount","firstStrAmount","secondStrAmount",
+    private static final String[] defaultX = {"503","171","28","111","300","518","0.75"};
+    private static final String[] defaultY = {"6","38","63","90","110","110","0.75"}; 
+    private static final String[] COORDINATES_BLOC = {"Print coordinations","Print scales"} ;
+    private static final String[] COORDINATES_PROPERITY = {"amount","firstStrAmount","secondStrAmount",
        "receiver","location","date" , "scale"};
      
     private static SettingsModel settingsModel ;
@@ -81,8 +80,13 @@ public class SettingsModel {
 
     }
 
-    public void reset(){
-           
+    public void resetSettings(){
+        try{
+        createDefaultIniFile();
+        }
+        catch(Exception exception){
+
+        }
     }
 
     public void saveSettings(){
