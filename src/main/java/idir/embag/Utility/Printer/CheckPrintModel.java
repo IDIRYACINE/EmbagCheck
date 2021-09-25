@@ -40,8 +40,8 @@ public class CheckPrintModel extends Pane{
 
     private void setUpLabels(String amount , String amountStringF ,String amountStringS , String receiver , String location ){
         ObservableList<Node> children =  getChildren();
-        int[] xCoordinates = new int[6];
-        int[] yCoordinates = new int[6];
+        double[] xCoordinates = new double[7];
+        double[] yCoordinates = new double[7];
 
         loadCoordinates(xCoordinates, yCoordinates);
 
@@ -56,13 +56,13 @@ public class CheckPrintModel extends Pane{
 
     }
 
-    private void loadCoordinates(int[] xCoordinates , int[] yCoordinates){
+    private void loadCoordinates(double[] xCoordinates , double[] yCoordinates){
         String [] STR_X_COORDINATES = settingsModel.getXcoordinates();
         String [] STR_Y_COORDINATES = settingsModel.getYcoordinates();
 
         for (int i = 0 ; i < STR_X_COORDINATES.length;i++){
-            xCoordinates[i] = Integer.parseInt(STR_X_COORDINATES[i]);
-            yCoordinates[i] = Integer.parseInt(STR_Y_COORDINATES[i]);;
+            xCoordinates[i] = Double.parseDouble(STR_X_COORDINATES[i]);
+            yCoordinates[i] = Double.parseDouble(STR_Y_COORDINATES[i]);;
         }
        
     }

@@ -141,17 +141,13 @@ public class SettingsModel {
 
     private void loadSettings(File settingsFile) throws IOException{
         ini = new Wini(settingsFile);
-        String[] COORDINATES_BLOC = {"Print coordinations","Print scales"} ;
-        String[] COORDINATES_PROPERITY = {"amount","firstStrAmount","secondStrAmount",
-           "receiver","location","date" , "scale"};
-
-        for (int i = 0 ; i < COORDINATES_BLOC.length ; i++){
             for (int j=0 ; j < COORDINATES_PROPERITY.length ; j++){
-                xCoordinates[j] = ini.get(COORDINATES_BLOC[i], COORDINATES_PROPERITY[j]+"X");
-                yCoordinates[j] = ini.get(COORDINATES_BLOC[i], COORDINATES_PROPERITY[j]+"Y");
+                xCoordinates[j] = ini.get(COORDINATES_BLOC[0], COORDINATES_PROPERITY[j]+"X");
+                yCoordinates[j] = ini.get(COORDINATES_BLOC[0], COORDINATES_PROPERITY[j]+"Y");
 
             }
-        }
+            xCoordinates[6] = ini.get(COORDINATES_BLOC[1], COORDINATES_PROPERITY[6]+"X");
+            yCoordinates[6] = ini.get(COORDINATES_BLOC[1], COORDINATES_PROPERITY[6]+"Y");
     }
 
 }

@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.Models.CheckExporter.ExportController">
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="idir.embag.Models.CheckExporter.ExportController">
    <children>
       <HBox alignment="CENTER" spacing="80.0">
          <children>
             <Button fx:id="exports" mnemonicParsing="false" onAction="#exportAll" prefHeight="159.0" prefWidth="257.0" text="Export All To Excel" />
-            <Button  mnemonicParsing="false" onAction="#exportSelected" prefHeight="159.0" prefWidth="257.0" text="Selected Export To Excel" />
+            <Button mnemonicParsing="false" onAction="#exportSelected" prefHeight="159.0" prefWidth="257.0" text="Selected Export To Excel" />
          </children>
       </HBox>
    </children>

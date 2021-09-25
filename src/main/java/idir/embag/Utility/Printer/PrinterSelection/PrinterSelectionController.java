@@ -23,7 +23,7 @@ import javafx.print.Printer;
 
 public class PrinterSelectionController  implements Initializable{
     @FXML
-    private TextField TopMargin,BottomMargin,LeftMargin,RightMargin , Xscale,Yscale;
+    private TextField TopMargin,BottomMargin,LeftMargin,RightMargin;
     @FXML
     private RadioButton PaysageRadio,LandScapeRadio;
     @FXML
@@ -99,7 +99,7 @@ public class PrinterSelectionController  implements Initializable{
         PageOrientation pageOrientation = getPageOreintation();
         Printer printer = printersMap.get(selectedPrinterName);
         printerSelectorModel.createPageLayout(printer,pageOrientation,leftMargin,rightMargin,topMargin,bottomMargin);
-        printerSelectorModel.printPage(Double.parseDouble(Xscale.getText()), Double.parseDouble(Yscale.getText()));
+        printerSelectorModel.printPage();
         printerSelectorModel.close();
     }
     @FXML

@@ -53,8 +53,8 @@ public class PrinterSelectorModel  {
         checkPrinter.setPageLayout(pageLayout,printer);
     }
 
-    public void printPage(double xScale , double yScale){
-        checkPrinter.print(xScale,yScale);
+    public void printPage( ){
+        checkPrinter.print();
     }
 
 

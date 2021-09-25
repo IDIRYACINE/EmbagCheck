@@ -105,8 +105,7 @@ public class CheckFormater {
         
         if (secondaryNums.size() > 0){
             arrayLength = secondaryNums.size() + principleNums.size() +1;
-            System.out.println(secondaryNums);
-            if(!secondaryNums.get(0).equals("")){CURRENCY_INSERTION_INDEX.add(arrayLength);}
+            if(!secondaryNums.get(0).equals("") || secondaryNums.size() > 1){CURRENCY_INSERTION_INDEX.add(arrayLength);}
             principleNums.addAll(secondaryNums);
         }
     }

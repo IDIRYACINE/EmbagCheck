@@ -38,7 +38,7 @@ public class CheckPrinter {
         this.printer = printer ;
     }
 
-    public void print(double xScale , double yScale){
+    public void print(){
          double[] scales = loadScaleFromSettings();
         node.getTransforms().add(new Scale(scales[0], scales[1]));
         PrinterJob job =  PrinterJob.createPrinterJob(printer);
@@ -53,8 +53,8 @@ public class CheckPrinter {
 
     private double[] loadScaleFromSettings(){
         double[] scales = new double[2];
-        scales[0] = Double.parseDouble(settingsModel.getXcoordinates()[5]);
-        scales[1] = Double.parseDouble( settingsModel.getYcoordinates()[5]);
+        scales[0] = Double.parseDouble(settingsModel.getXcoordinates()[6]);
+        scales[1] = Double.parseDouble( settingsModel.getYcoordinates()[6]);
         return scales;
     }
     
