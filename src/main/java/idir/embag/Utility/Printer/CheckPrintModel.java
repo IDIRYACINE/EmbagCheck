@@ -48,9 +48,9 @@ public class CheckPrintModel extends Pane{
         children.add(createLabel(amount, 122, TextAlignment.LEFT,Pos.CENTER_RIGHT, defaultFont, xCoordinates[0], yCoordinates[0]));
         children.add(createLabel(amountStringF, 390, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont, xCoordinates[1], yCoordinates[1]));
         children.add(createLabel(amountStringS, 530, TextAlignment.LEFT,Pos.CENTER_LEFT, defaultFont,  xCoordinates[2], yCoordinates[2]));
-        children.add(createLabel(receiver, 480, TextAlignment.CENTER,Pos.CENTER_LEFT, defaultFont,  xCoordinates[3], yCoordinates[3]));
+        children.add(createLabel(receiver, 480, TextAlignment.CENTER,Pos.CENTER_LEFT, defaultFont,  xCoordinates[5], yCoordinates[5]));
         children.add(createLabel(location, 180, TextAlignment.RIGHT,Pos.CENTER_RIGHT, smallFont,  xCoordinates[4], yCoordinates[4]));
-        children.add(createLabel(getDate(), 92, TextAlignment.RIGHT,Pos.CENTER_LEFT, smallFont,  xCoordinates[5], yCoordinates[5]));
+        children.add(createLabel(getDate(), 92, TextAlignment.RIGHT,Pos.CENTER_LEFT, smallFont,  xCoordinates[3], yCoordinates[3]));
         children.add(createLineBar(4, 6, 0, 54, 23, 0));
         children.add(createLineBar(14, 21, -10, 60, 24, -10));
 

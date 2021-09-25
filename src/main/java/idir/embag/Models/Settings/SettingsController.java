@@ -38,8 +38,9 @@ public class SettingsController implements Initializable{
 
     @FXML
     private void resetSettings(){
-        
         settingsModel.resetSettings();
+        loadInitialSettings();
+
     }
 
    private void loadInitialSettings(){

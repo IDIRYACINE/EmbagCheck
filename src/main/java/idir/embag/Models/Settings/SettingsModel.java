@@ -85,7 +85,6 @@ public class SettingsModel {
         createDefaultIniFile();
         }
         catch(Exception exception){
-
         }
     }
 
