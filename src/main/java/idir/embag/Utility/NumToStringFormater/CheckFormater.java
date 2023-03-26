@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 
 public class CheckFormater {
    
-    private static String securityBlock = "************************************************************************";
     private static Boolean specialCase = false ;
     private static final String[] CURRENCY = {"DA " , " CTS"};
     private static ArrayList<Integer> CURRENCY_INSERTION_INDEX = new ArrayList<Integer>();
@@ -20,11 +19,6 @@ public class CheckFormater {
     private static ArrayList<String> secondaryNums ;
     private static int unitCount;
 
-
-    private static String amountSecurityFormater(String value){
-        String pattern = "****";
-        return pattern+value+pattern;
-    } 
 
     public static String spaceFormater(String value){
         splitMainAndSecondaryCurrency(value);

@@ -1,22 +1,13 @@
 package idir.embag.Utility.Printer;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import javax.swing.GroupLayout.Alignment;
-
-import idir.embag.App;
 import idir.embag.Models.Settings.SettingsModel;
-import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -95,29 +86,5 @@ public class CheckPrintModel extends Pane{
         return line ;
     }
 
-
-    private ImageView createImage(){
-        InputStream inputStream;
-        ImageView imageView =   null ;
-        
-            inputStream = App.class.getResourceAsStream("/images/check.png");
-            Image image = new Image(inputStream);
-
-            //Creating the image view
-             imageView = new ImageView();
-
-      //Setting image to the image view
-            imageView.setImage(image);
-
-      //Setting the image view parameters
-            imageView.setX(0);
-            imageView.setY(0);
-            imageView.setFitWidth(642.3);
-            imageView.setFitHeight(264.6);
-            //imageView.setPreserveRatio(true);
-        
-      
-      return imageView;
-    }
 
 }

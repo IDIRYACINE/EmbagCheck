@@ -3,7 +3,6 @@ package idir.embag.Utility.Exporter;
 import org.apache.poi.ss.usermodel.Sheet;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import idir.embag.App;
 import idir.embag.Models.CheckDataModel.CheckModel;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
@@ -31,10 +29,6 @@ public class Excel {
         Row  header = sheet.createRow(0);
         CellStyle headerStyle = setUpHeaderStyle();
         setUpHeaderCells(header, headerStyle);
-    }
-
-    private void reset(){
-        
     }
 
     private void setUpWorkSheet(String title){

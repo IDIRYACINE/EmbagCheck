@@ -7,9 +7,7 @@ import com.jfoenix.controls.JFXDialog;
 
 import idir.embag.Models.CheckDataModel.CheckModel;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 

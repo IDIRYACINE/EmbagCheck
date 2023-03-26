@@ -10,7 +10,6 @@ import idir.embag.Models.CheckDataModel.CheckModel;
 import idir.embag.Models.CheckSearch.SearchView;
 import idir.embag.Utility.Exporter.Excel;
 import javafx.collections.ListChangeListener;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.fxml.Initializable;
